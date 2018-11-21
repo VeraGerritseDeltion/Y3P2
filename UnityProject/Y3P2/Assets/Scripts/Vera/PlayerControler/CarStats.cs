@@ -5,6 +5,6 @@ using UnityEngine;
 public class CarStats : MonoBehaviour {
     public float speed;
     public float weight;
-    public float accelaration;
+    public float acceleration;
     public float handling;
 }
