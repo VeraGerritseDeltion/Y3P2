@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f15546845b734d74d959249670790e01
+guid: c25b12075f389a343ba0875b7bbdfa49
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -8,7 +8,7 @@ ModelImporter:
     2100000: mat_default
     2300000: //RootNode
     3300000: //RootNode
-    4300000: 3D_Car_Blue
+    4300000: body002
   externalObjects: {}
   materials:
     importMaterials: 1
