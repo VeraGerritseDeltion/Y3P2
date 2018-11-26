@@ -13,6 +13,7 @@ public class Player : MonoBehaviour {
     private bool drifting;
     private float h;
     [SerializeField] private float driftMultiplier;
+    public Camera myCam;
 
 	void Start () {
 		
@@ -74,23 +75,35 @@ public class Player : MonoBehaviour {
         transform.Rotate(0, hor, 0);
     }
 
+    private bool left;
+    private bool right;
+
     private void Drift()
     {
-        drifting = false;
         if(currentSpeed != 0)
         {
-            if (Input.GetButton("C" + playerNum.ToString() + " BL"))
+            if (Input.GetButton("C" + playerNum.ToString() + " BR"))
             {
-                print("Test");
-                h = Mathf.Lerp(-1, 1, h - 0.1f);
-                hor = h * myCar.handling * driftMultiplier;
-                drifting = true;
+                if(Input.GetAxis("C" + playerNum.ToString() + " Hor") > 0 && !right)
+                {
+                    h = Mathf.Lerp(-1, 1, h + 0.1f);
+                    hor = -h * myCar.handling * driftMultiplier;
+                    drifting = true;
+                    left = true;
+                }
+                else if(Input.GetAxis("C" + playerNum.ToString() + " Hor") < 0 && !left)
+                {
+                    h = Mathf.Lerp(-1, 1, h - 0.1f);
+                    hor = h * myCar.handling * driftMultiplier;
+                    drifting = true;
+                    right = true;
+                }
             }
-            else if (Input.GetButton("C" + playerNum.ToString() + " BR"))
+            else
             {
-                h = Mathf.Lerp(-1, 1, h + 0.1f);
-                hor = -h * myCar.handling * driftMultiplier;
-                drifting = true;
+                right = false;
+                left = false;
+                drifting = false;
             }
         }
 
@@ -98,7 +111,7 @@ public class Player : MonoBehaviour {
         if (drifting)
         {
             print("Test3");
-            currentMaxSpeed = currentMaxSpeed / driftMultiplier;
+            currentMaxSpeed = currentMaxSpeed / driftMultiplier * 0.8f;
             //transform.Rotate(0, hor, 0);
         }
     }
