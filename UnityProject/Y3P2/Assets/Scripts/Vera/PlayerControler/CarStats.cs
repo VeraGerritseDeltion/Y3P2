@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class CarStats : MonoBehaviour
 {
-    public float speed;
-    public float weight;
-    public float acceleration;
-    public float handling;
-    public float driftMultiplier;
+    public float speed = 50f;
+    public float weight = 800f;
+    public float acceleration = 10f;
+    public float handling = 1.5f;
+    public float driftMultiplier = 1.5f;
 }
