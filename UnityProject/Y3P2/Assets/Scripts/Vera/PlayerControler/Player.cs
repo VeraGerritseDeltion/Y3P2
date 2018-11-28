@@ -15,13 +15,19 @@ public class Player : MonoBehaviour {
 
     public Camera myCam;
 
+    public Transform wheelLoc;
+    public Transform carLoc;
+
 	void Start () {
 		
 	}
 	
 	void Update ()
     {
-        Movement();
+        if (GameManager.instance.racing)
+        {
+            Movement();
+        }
     }
 
     private void Movement()
