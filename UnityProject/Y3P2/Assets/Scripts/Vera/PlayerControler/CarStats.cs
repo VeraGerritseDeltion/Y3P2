@@ -8,4 +8,5 @@ public class CarStats : MonoBehaviour
     public float weight;
     public float acceleration;
     public float handling;
+    public float driftMultiplier;
 }

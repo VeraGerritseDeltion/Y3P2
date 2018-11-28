@@ -12,7 +12,7 @@ public class Player : MonoBehaviour {
     private float currentSpeed;
     private bool drifting;
     private float h;
-    [SerializeField] private float driftMultiplier;
+
     public Camera myCam;
 
 	void Start () {
@@ -87,14 +87,14 @@ public class Player : MonoBehaviour {
                 if(Input.GetAxis("C" + playerNum.ToString() + " Hor") > 0 && !right)
                 {
                     h = Mathf.Lerp(-1, 1, h + 0.1f);
-                    hor = -h * myCar.handling * driftMultiplier;
+                    hor = -h * myCar.handling * myCar.driftMultiplier;
                     drifting = true;
                     left = true;
                 }
                 else if(Input.GetAxis("C" + playerNum.ToString() + " Hor") < 0 && !left)
                 {
                     h = Mathf.Lerp(-1, 1, h - 0.1f);
-                    hor = h * myCar.handling * driftMultiplier;
+                    hor = h * myCar.handling * myCar.driftMultiplier;
                     drifting = true;
                     right = true;
                 }
@@ -111,7 +111,7 @@ public class Player : MonoBehaviour {
         if (drifting)
         {
             print("Test3");
-            currentMaxSpeed = currentMaxSpeed / driftMultiplier * 0.8f;
+            currentMaxSpeed = currentMaxSpeed / myCar.driftMultiplier * 0.8f;
             //transform.Rotate(0, hor, 0);
         }
     }
