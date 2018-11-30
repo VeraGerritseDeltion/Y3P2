@@ -12,8 +12,6 @@ namespace AI
 
         private bool showGizmos = true;
         private Color gizmoColor = Color.blue;
-        private bool triggerGizmo = true;
-        private Color triggerColor = Color.yellow;
         private bool moveGizmo = false;
 
         private void OnEnable()
@@ -30,8 +28,7 @@ namespace AI
                     pathRef = (Path)target;
                 }
 
-                Waypoint[] waypoints = pathRef.waypoints;
-                Vector3 colliderSize = pathRef.colliderSize;
+                Vector3[] waypoints = pathRef.waypoints;
 
                 if(waypoints.Length >= 4)
                 {
@@ -41,18 +38,14 @@ namespace AI
                     {
                         Handles.color = gizmoColor;
 
-                        Vector3 waypointPosition = waypoints[i].position + position;
-                        Vector3 nextWaypointPosition = (i < waypoints.Length - 1) ? waypoints[i + 1].position + position : waypoints[0].position + position;
+                        Vector3 waypointPosition = waypoints[i] + position;
+                        Vector3 nextWaypointPosition = (i < waypoints.Length - 1) ? waypoints[i + 1] + position : waypoints[0] + position;
 
                         Handles.DrawLine(waypointPosition, nextWaypointPosition);
                         Handles.DrawDottedLine(waypointPosition, waypointPosition + (Vector3.up * 20f), 2f);
                         Handles.DrawWireCube(waypointPosition, new Vector3(0.5f, 0.5f, 0.5f));
 
-                        if (triggerGizmo)
-                        {
-                            Handles.color = triggerColor;
-                            Handles.DrawWireCube(waypointPosition + (Vector3.up * colliderSize.y / 2), colliderSize);
-                        }
+                        Handles.DrawWireDisc(waypointPosition, Vector3.up, pathRef.waypointRadius);
 
                         if (moveGizmo)
                         {
@@ -84,19 +77,10 @@ namespace AI
                 {
                     EditorGUILayout.LabelField("Move waypoints with gizmo", EditorStyles.boldLabel);
                     moveGizmo = EditorGUILayout.Toggle("Move gizmo", moveGizmo);
-
-                    EditorGUILayout.LabelField("Trigger gizmo", EditorStyles.boldLabel);
-
-                    triggerGizmo = EditorGUILayout.Toggle("Trigger gizmo", triggerGizmo);
-                    if (triggerGizmo)
-                    {
-                        triggerColor = EditorGUILayout.ColorField("Trigger color", triggerColor);
-                    }
                 }
                 else
                 {
                     moveGizmo = false;
-                    triggerGizmo = false;
                 }
             }
         }
