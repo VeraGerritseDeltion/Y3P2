@@ -19,11 +19,13 @@ public class GameManager : MonoBehaviour {
 
     public void StartGame()
     {
-        if(InputManager.instance.allControlers.Count != 0)
+        if(CarSelectionManager.instance.allCars.Count != 0)
         {
+            
             UIManager.instance.OnMenuChanged(UIManager.MenuType.inGame);
-            LevelManager.instance.PlacePlayers(InputManager.instance.allControlers);
+            LevelManager.instance.PlacePlayers(CarSelectionManager.instance.allCars);
             racing = true;
+            played = true;
         }
     }
 

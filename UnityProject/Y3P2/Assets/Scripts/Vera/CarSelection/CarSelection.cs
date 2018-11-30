@@ -5,16 +5,16 @@ using UnityEngine.UI;
 
 public class CarSelection : MonoBehaviour
 {
-    private Player myPlayer;
+    public Player myPlayer;
     private GameObject wheels;
     private GameObject car;
 
     private int currentWheelIndex;
     private int currentCarIndex;
 
-    private int myLayer;
-    private int myControler;
-    private CarStats myStats;
+    public int myLayer;
+    public int myControler;
+    public CarStats myStats;
 
     private int curP;
     public enum CurrentPart { car,wheels, finished}
@@ -74,11 +74,13 @@ public class CarSelection : MonoBehaviour
         myButtons[currentButton].SetBool("Highlight", true);
     }
 
-    public void CarFirstSetup(Player myP, int layer, bool firstSetup)
+    public void CarFirstSetup(Player myP, int layer, bool firstSetup, int controler)
     {
         myPlayer = myP;
         myLayer = layer;
-        myControler = layer - 10;
+        print(controler.ToString() + "controler");
+        myControler = controler;
+        myPlayer.playerNum = controler;
         if (firstSetup)
         {
             currentWheelIndex = Random.Range(0, CarSelectionManager.instance.wheelParts.Count);
@@ -150,6 +152,8 @@ public class CarSelection : MonoBehaviour
     private void Car()
     {
         GameObject temp = car;
+        print(CarSelectionManager.instance.carObjects.Count);
+        print(myPlayer.carLoc);
         car = Instantiate(CarSelectionManager.instance.carObjects[currentCarIndex], myPlayer.carLoc);
         car.transform.parent = myPlayer.carLoc;
         car.layer = myLayer;
@@ -201,7 +205,7 @@ public class CarSelection : MonoBehaviour
         UpdateStats();
     }
 
-    private void UpdateStats()
+    public void UpdateStats()
     {
         PartStats wS = new PartStats();
         PartStats cS = new PartStats();
