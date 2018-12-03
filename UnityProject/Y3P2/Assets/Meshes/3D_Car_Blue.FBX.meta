@@ -1,14 +1,14 @@
 fileFormatVersion: 2
-guid: 6ce61992530c5d345afe0386600cde14
+guid: a70c68a29bf473f46be7531c12082935
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: mat_default
+    2100000: 01 - Default
     2300000: //RootNode
     3300000: //RootNode
-    4300000: 3D_Wheel_Standard
+    4300000: 3D_Car_Blue
     7400000: Take 001
     9500000: //RootNode
   externalObjects: {}
@@ -62,7 +62,7 @@ ModelImporter:
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
-    previousCalculatedGlobalScale: 0.01
+    previousCalculatedGlobalScale: 0.0254
     hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60

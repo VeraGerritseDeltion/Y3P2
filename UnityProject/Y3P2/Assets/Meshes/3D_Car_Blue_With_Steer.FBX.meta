@@ -1,14 +1,24 @@
 fileFormatVersion: 2
-guid: 571fd414527986a46bfa9b59f6b4d1b7
+guid: 2aca2273c0000df468ffe1d039f29c34
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2100000: mat_default
-    2300000: //RootNode
-    3300000: //RootNode
+    100000: 3D_Car_Blue
+    100002: //RootNode
+    100004: 3D_Stiring_Wheel
+    400000: 3D_Car_Blue
+    400002: //RootNode
+    400004: 3D_Stiring_Wheel
+    2100000: 01 - Default
+    2100002: mat_default
+    2300000: 3D_Car_Blue
+    2300002: 3D_Stiring_Wheel
+    3300000: 3D_Car_Blue
+    3300002: 3D_Stiring_Wheel
     4300000: 3D_Car_Blue
+    4300002: 3D_Stiring_Wheel
+    7400000: Take 001
+    9500000: //RootNode
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -60,8 +70,8 @@ ModelImporter:
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
-    previousCalculatedGlobalScale: 1
-    hasPreviousCalculatedGlobalScale: 0
+    previousCalculatedGlobalScale: 0.0254
+    hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -86,7 +96,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
