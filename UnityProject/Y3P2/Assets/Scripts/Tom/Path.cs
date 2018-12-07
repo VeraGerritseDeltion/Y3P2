@@ -41,7 +41,7 @@ namespace AI
             {
                 for (int i = 0; i < waypoints.Length; i++)
                 {
-                    generatedPath[(lap * (waypoints.Length - 1)) + i] = waypoints[i];
+                    generatedPath[(lap * waypoints.Length) + i] = waypoints[i] + (Random.insideUnitSphere * waypointRadius);
                 }
             }
             return generatedPath;
