@@ -18,16 +18,32 @@ public class Player : MonoBehaviour {
     public Transform wheelLoc;
     public Transform carLoc;
 
+    [Header("Animators")]
+    public WheelAnim wheelsAnim;
+    public Animator carAnim;
+
 	void Start () {
 		
 	}
 	
 	void Update ()
     {
-        if (GameManager.instance.racing)
+        if (GameManager.instance != null)
+        {
+            if (GameManager.instance.racing)
+            {
+                Movement();
+            }
+        }
+        else
         {
             Movement();
         }
+
+    }
+    public void Startup()
+    {
+        wheelsAnim = GetComponentInChildren<WheelAnim>();
     }
 
     private void Movement()
@@ -56,7 +72,8 @@ public class Player : MonoBehaviour {
         {
             currentSpeed = Mathf.Clamp(currentSpeed - Acceleration() / 1.5f, 0, spd);
         }
-
+        print(currentSpeed + " currentspeed");
+        wheelsAnim.Motor(currentSpeed);
         transform.Translate(currentSpeed, 0, 0);
     }
 
@@ -77,6 +94,8 @@ public class Player : MonoBehaviour {
             {
                 hor = Mathf.Clamp(hor + 0.1f, -myCar.handling, 0);
             }
+            print(hor + " hor");
+            wheelsAnim.Turn(hor);
         }
         transform.Rotate(0, hor, 0);
     }

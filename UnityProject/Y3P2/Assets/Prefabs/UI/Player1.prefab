@@ -467,6 +467,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0280514b48dcfe745adcefa9217f8a90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myPlayer: {fileID: 0}
+  myLayer: 0
+  myControler: 0
+  myStats: {fileID: 0}
   currentPart: 0
   finished: 0
   myButtons:
