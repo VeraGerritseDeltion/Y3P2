@@ -56,7 +56,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2553183745247934337}
   m_LocalRotation: {x: 0.12065141, y: 0.6967376, z: -0.12065145, w: 0.6967376}
-  m_LocalPosition: {x: -1.26, y: 2.0499985, z: 0}
+  m_LocalPosition: {x: -8.38, y: 4.65, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2553183745303345325}
@@ -199,12 +199,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myCar: {fileID: 3212790150646487421}
-  hor: 0
-  vert: 0
+  hor: 1
+  vert: 1
   playerNum: 1
   myCam: {fileID: 2553183745247934343}
   wheelLoc: {fileID: 7110747394252440762}
   carLoc: {fileID: 5241248006915736126}
+  wheelsAnim: {fileID: 0}
+  carAnim: {fileID: 0}
 --- !u!1 &6499078593015429120
 GameObject:
   m_ObjectHideFlags: 0
