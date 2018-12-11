@@ -36,6 +36,8 @@ public class CarSelectionManager : MonoBehaviour
 
     public void AddPlayer(int controler)
     {
+        print(playerStandart);
+        print(locations[players.Count]);
         GameObject newPL = Instantiate(playerStandart, locations[players.Count]);
         Player nP = newPL.GetComponent<Player>();
         if(nP == null)

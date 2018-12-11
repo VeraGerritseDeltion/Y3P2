@@ -20,7 +20,7 @@ public class Player : MonoBehaviour {
 
     [Header("Animators")]
     public WheelAnim wheelsAnim;
-    public Animator carAnim;
+    public CarAnim carAnim;    
 
 	void Start () {
 		
@@ -43,7 +43,6 @@ public class Player : MonoBehaviour {
     }
     public void Startup()
     {
-        wheelsAnim = GetComponentInChildren<WheelAnim>();
     }
 
     private void Movement()
@@ -72,8 +71,12 @@ public class Player : MonoBehaviour {
         {
             currentSpeed = Mathf.Clamp(currentSpeed - Acceleration() / 1.5f, 0, spd);
         }
-        print(currentSpeed + " currentspeed");
-        wheelsAnim.Motor(currentSpeed);
+        if(wheelsAnim != null)
+        {
+            print("Broom");
+            wheelsAnim.Motor(currentSpeed);
+        }
+
         transform.Translate(currentSpeed, 0, 0);
     }
 
@@ -94,7 +97,12 @@ public class Player : MonoBehaviour {
             {
                 hor = Mathf.Clamp(hor + 0.1f, -myCar.handling, 0);
             }
-            print(hor + " hor");
+
+
+        }
+        if (wheelsAnim != null)
+        {
+            print("wheeee");
             wheelsAnim.Turn(hor);
         }
         transform.Rotate(0, hor, 0);
@@ -115,6 +123,7 @@ public class Player : MonoBehaviour {
                     hor = -h * myCar.handling * myCar.driftMultiplier;
                     drifting = true;
                     left = true;
+                    carAnim.carAnimator.SetTrigger("DriftR");
                 }
                 else if(Input.GetAxis("C" + playerNum.ToString() + " Hor") < 0 && !left)
                 {
@@ -122,6 +131,7 @@ public class Player : MonoBehaviour {
                     hor = h * myCar.handling * myCar.driftMultiplier;
                     drifting = true;
                     right = true;
+                    carAnim.carAnimator.SetTrigger("DriftR");
                 }
             }
             else
@@ -129,6 +139,7 @@ public class Player : MonoBehaviour {
                 right = false;
                 left = false;
                 drifting = false;
+                carAnim.carAnimator.SetTrigger("StopDrift");
             }
         }
 

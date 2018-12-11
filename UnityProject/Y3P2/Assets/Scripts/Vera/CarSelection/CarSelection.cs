@@ -66,7 +66,6 @@ public class CarSelection : MonoBehaviour
 
     private void UpdateButtons()
     {
-        print(currentButton);
         for (int i = 0; i < myButtons.Count; i++)
         {
             myButtons[i].SetBool("Highlight", false);
@@ -156,9 +155,11 @@ public class CarSelection : MonoBehaviour
         print(myPlayer.carLoc);
         car = Instantiate(CarSelectionManager.instance.carObjects[currentCarIndex], myPlayer.carLoc);
         car.transform.parent = myPlayer.carLoc;
+        //myPlayer.carAnim = car.GetComponentInChildren<CarAnim>();
         car.layer = myLayer;
         foreach (Transform child in car.transform)
         {
+            print(child.gameObject);
             child.gameObject.layer = myLayer;
         }
         if (temp != null)
@@ -193,6 +194,7 @@ public class CarSelection : MonoBehaviour
         GameObject temp = wheels;
         wheels = Instantiate(CarSelectionManager.instance.wheelParts[currentWheelIndex], myPlayer.wheelLoc);
         wheels.transform.parent = myPlayer.wheelLoc;
+        myPlayer.wheelsAnim = wheels.GetComponentInChildren<WheelAnim>();
         wheels.layer = myLayer;
         foreach (Transform child in wheels.transform)
         {
