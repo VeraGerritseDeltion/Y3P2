@@ -6,6 +6,7 @@ using UnityEngine.AI;
 
 namespace AI
 {
+    /*
     public class Car : MonoBehaviour
     {
         public WheelCollider frontWheelLeft;
@@ -15,36 +16,55 @@ namespace AI
         public float maxSpeed = 130f;
         public float motorTorque = 1000f;
 
-        public Transform test;
+        public AnimationCurve curve;
 
-        private float timer;
+        private Vector2 relativeVector;
+        private float oldSteerAngle;
+        private float newSteerAngle;
+        private int waypointIndex = 1;
+        private Vector3[] path;
+
+        private void Start()
+        {
+            path = FindObjectOfType<Path>().GetPath();
+            oldSteerAngle = GetSteerAngle(path[waypointIndex]);
+        }
 
         private void Update()
         {
-            if ((2 * Mathf.PI * frontWheelLeft.radius * frontWheelLeft.rpm * 60f / 1000f) >= maxSpeed)
+            if (Input.GetKeyDown(KeyCode.Mouse0))
             {
-                print(timer);
-            }
-            else
-            {
-                timer += Time.deltaTime;
+                if(waypointIndex < path.Length - 1)
+                {
+                    waypointIndex++;
+                }
+                else
+                {
+                    waypointIndex = 0;
+                }
+                print(waypointIndex);
             }
         }
 
         private void FixedUpdate()
         {
-            SteerWheelsTowards(test.position);
+            SteerWheelsTowards(path[waypointIndex]);
             PowerWheels();
+        }
+
+        private float GetSteerAngle(Vector3 position)
+        {
+            relativeVector = transform.InverseTransformPoint(position);
+            return (relativeVector.x / relativeVector.magnitude) * maxSteerAngle;
         }
 
         private void SteerWheelsTowards(Vector3 position)
         {
-            Vector3 relativeVector = transform.InverseTransformPoint(position);
-
-            float newSteerAngle = (relativeVector.x / relativeVector.magnitude) * maxSteerAngle;
+            newSteerAngle = GetSteerAngle(position);
 
             frontWheelLeft.steerAngle = newSteerAngle;
             frontWheelRight.steerAngle = newSteerAngle;
+            oldSteerAngle = newSteerAngle;
         }
 
         private void PowerWheels()
@@ -59,7 +79,17 @@ namespace AI
                 frontWheelLeft.motorTorque = 0f;
                 frontWheelRight.motorTorque = 0f;
             }
-            print("Current speed: " + 2 * Mathf.PI * frontWheelLeft.radius * frontWheelLeft.rpm * 60f / 1000f);
+            //print("Current speed: " + 2 * Mathf.PI * frontWheelLeft.radius * frontWheelLeft.rpm * 60f / 1000f);
+        }
+
+        private void OnDrawGizmos()
+        {
+            if(path != null && UnityEditor.EditorApplication.isPlaying)
+            {
+                Gizmos.color = Color.red;
+                Gizmos.DrawLine(transform.position, path[waypointIndex]);
+            }
         }
     }
+    */
 }

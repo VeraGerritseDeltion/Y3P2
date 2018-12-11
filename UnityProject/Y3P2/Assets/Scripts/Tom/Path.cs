@@ -22,7 +22,7 @@ namespace AI
 
         private Vector3[] generatedPath;
 
-        private void Start()
+        private void Awake()
         {
             generatedPath = new Vector3[waypoints.Length * tempLapCount];
         }
@@ -39,9 +39,9 @@ namespace AI
         {
             for (int lap = 0; lap < tempLapCount; lap++)
             {
-                for (int i = 0; i < waypoints.Length; i++)
+                for (int waypoint = 0; waypoint < waypoints.Length; waypoint++)
                 {
-                    generatedPath[(lap * waypoints.Length) + i] = waypoints[i] + (Random.insideUnitSphere * waypointRadius);
+                    generatedPath[(lap * waypoints.Length) + waypoint] = waypoints[waypoint] + (Random.insideUnitSphere * waypointRadius);
                 }
             }
             return generatedPath;
