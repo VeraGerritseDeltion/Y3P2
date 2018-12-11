@@ -1,29 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!4 &8250436801243851496 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7048500898647205522, guid: 7a25f5a207d1ccd48ac13cfaf33221db,
-    type: 3}
-  m_PrefabInstance: {fileID: 1418139892077055098}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &8250436800998192705 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7048500898647205522, guid: 7a25f5a207d1ccd48ac13cfaf33221db,
-    type: 3}
-  m_PrefabInstance: {fileID: 1418139891785388243}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &8250436800601230415 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7048500898647205522, guid: 7a25f5a207d1ccd48ac13cfaf33221db,
-    type: 3}
-  m_PrefabInstance: {fileID: 1418139891375991517}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &4805313878257449862 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7048500898647205522, guid: 7a25f5a207d1ccd48ac13cfaf33221db,
-    type: 3}
-  m_PrefabInstance: {fileID: 2557668255748152596}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1418139892481916027
 GameObject:
   m_ObjectHideFlags: 0
@@ -33,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1418139892481916004}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Garages
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,6 +34,30 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4805313878257449862 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7048500898647205522, guid: 7a25f5a207d1ccd48ac13cfaf33221db,
+    type: 3}
+  m_PrefabInstance: {fileID: 2557668255748152596}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8250436800601230415 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7048500898647205522, guid: 7a25f5a207d1ccd48ac13cfaf33221db,
+    type: 3}
+  m_PrefabInstance: {fileID: 1418139891375991517}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8250436801243851496 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7048500898647205522, guid: 7a25f5a207d1ccd48ac13cfaf33221db,
+    type: 3}
+  m_PrefabInstance: {fileID: 1418139892077055098}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8250436800998192705 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7048500898647205522, guid: 7a25f5a207d1ccd48ac13cfaf33221db,
+    type: 3}
+  m_PrefabInstance: {fileID: 1418139891785388243}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1418139891375991517
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -119,11 +119,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4311070275609384599, guid: 7a25f5a207d1ccd48ac13cfaf33221db,
-        type: 3}
-      propertyPath: m_Name
-      value: Garage p4
-      objectReference: {fileID: 0}
     - target: {fileID: 5014752232667130333, guid: 7a25f5a207d1ccd48ac13cfaf33221db,
         type: 3}
       propertyPath: m_Name
@@ -132,37 +127,32 @@ PrefabInstance:
     - target: {fileID: 2720590178066555111, guid: 7a25f5a207d1ccd48ac13cfaf33221db,
         type: 3}
       propertyPath: m_Layer
-      value: 14
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2959780331975635529, guid: 7a25f5a207d1ccd48ac13cfaf33221db,
         type: 3}
       propertyPath: m_Layer
-      value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: 4311070275609384599, guid: 7a25f5a207d1ccd48ac13cfaf33221db,
-        type: 3}
-      propertyPath: m_Layer
-      value: 14
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 5014752232667130333, guid: 7a25f5a207d1ccd48ac13cfaf33221db,
         type: 3}
       propertyPath: m_Layer
-      value: 14
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1111045667601810137, guid: 7a25f5a207d1ccd48ac13cfaf33221db,
         type: 3}
       propertyPath: m_Layer
-      value: 14
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 3921419928466633584, guid: 7a25f5a207d1ccd48ac13cfaf33221db,
         type: 3}
       propertyPath: m_Layer
-      value: 14
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 6481878117524898336, guid: 7a25f5a207d1ccd48ac13cfaf33221db,
         type: 3}
       propertyPath: m_CullingMask.m_Bits
-      value: 16384
+      value: 49152
       objectReference: {fileID: 0}
     - target: {fileID: 6481878117524898336, guid: 7a25f5a207d1ccd48ac13cfaf33221db,
         type: 3}
@@ -172,7 +162,12 @@ PrefabInstance:
     - target: {fileID: 4146578178949329794, guid: 7a25f5a207d1ccd48ac13cfaf33221db,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4311070275609384599, guid: 7a25f5a207d1ccd48ac13cfaf33221db,
+        type: 3}
+      propertyPath: m_Name
+      value: Garage p4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a25f5a207d1ccd48ac13cfaf33221db, type: 3}
@@ -237,11 +232,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4311070275609384599, guid: 7a25f5a207d1ccd48ac13cfaf33221db,
-        type: 3}
-      propertyPath: m_Name
-      value: Garage p2
-      objectReference: {fileID: 0}
     - target: {fileID: 5014752232667130333, guid: 7a25f5a207d1ccd48ac13cfaf33221db,
         type: 3}
       propertyPath: m_Name
@@ -250,32 +240,27 @@ PrefabInstance:
     - target: {fileID: 3921419928466633584, guid: 7a25f5a207d1ccd48ac13cfaf33221db,
         type: 3}
       propertyPath: m_Layer
-      value: 12
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2720590178066555111, guid: 7a25f5a207d1ccd48ac13cfaf33221db,
         type: 3}
       propertyPath: m_Layer
-      value: 12
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 5014752232667130333, guid: 7a25f5a207d1ccd48ac13cfaf33221db,
         type: 3}
       propertyPath: m_Layer
-      value: 12
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2959780331975635529, guid: 7a25f5a207d1ccd48ac13cfaf33221db,
         type: 3}
       propertyPath: m_Layer
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 4311070275609384599, guid: 7a25f5a207d1ccd48ac13cfaf33221db,
-        type: 3}
-      propertyPath: m_Layer
-      value: 12
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1111045667601810137, guid: 7a25f5a207d1ccd48ac13cfaf33221db,
         type: 3}
       propertyPath: m_Layer
-      value: 12
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 6481878117524898336, guid: 7a25f5a207d1ccd48ac13cfaf33221db,
         type: 3}
@@ -285,12 +270,17 @@ PrefabInstance:
     - target: {fileID: 6481878117524898336, guid: 7a25f5a207d1ccd48ac13cfaf33221db,
         type: 3}
       propertyPath: m_CullingMask.m_Bits
-      value: 4096
+      value: 36864
       objectReference: {fileID: 0}
     - target: {fileID: 4146578178949329794, guid: 7a25f5a207d1ccd48ac13cfaf33221db,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4311070275609384599, guid: 7a25f5a207d1ccd48ac13cfaf33221db,
+        type: 3}
+      propertyPath: m_Name
+      value: Garage p2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a25f5a207d1ccd48ac13cfaf33221db, type: 3}
@@ -355,11 +345,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4311070275609384599, guid: 7a25f5a207d1ccd48ac13cfaf33221db,
-        type: 3}
-      propertyPath: m_Name
-      value: Garage p3
-      objectReference: {fileID: 0}
     - target: {fileID: 5014752232667130333, guid: 7a25f5a207d1ccd48ac13cfaf33221db,
         type: 3}
       propertyPath: m_Name
@@ -368,37 +353,32 @@ PrefabInstance:
     - target: {fileID: 5014752232667130333, guid: 7a25f5a207d1ccd48ac13cfaf33221db,
         type: 3}
       propertyPath: m_Layer
-      value: 13
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2959780331975635529, guid: 7a25f5a207d1ccd48ac13cfaf33221db,
         type: 3}
       propertyPath: m_Layer
-      value: 13
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1111045667601810137, guid: 7a25f5a207d1ccd48ac13cfaf33221db,
         type: 3}
       propertyPath: m_Layer
-      value: 13
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 3921419928466633584, guid: 7a25f5a207d1ccd48ac13cfaf33221db,
         type: 3}
       propertyPath: m_Layer
-      value: 13
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2720590178066555111, guid: 7a25f5a207d1ccd48ac13cfaf33221db,
         type: 3}
       propertyPath: m_Layer
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 4311070275609384599, guid: 7a25f5a207d1ccd48ac13cfaf33221db,
-        type: 3}
-      propertyPath: m_Layer
-      value: 13
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 6481878117524898336, guid: 7a25f5a207d1ccd48ac13cfaf33221db,
         type: 3}
       propertyPath: m_CullingMask.m_Bits
-      value: 8192
+      value: 40960
       objectReference: {fileID: 0}
     - target: {fileID: 6481878117524898336, guid: 7a25f5a207d1ccd48ac13cfaf33221db,
         type: 3}
@@ -408,7 +388,12 @@ PrefabInstance:
     - target: {fileID: 4146578178949329794, guid: 7a25f5a207d1ccd48ac13cfaf33221db,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4311070275609384599, guid: 7a25f5a207d1ccd48ac13cfaf33221db,
+        type: 3}
+      propertyPath: m_Name
+      value: Garage p3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a25f5a207d1ccd48ac13cfaf33221db, type: 3}
@@ -486,7 +471,12 @@ PrefabInstance:
     - target: {fileID: 4146578178949329794, guid: 7a25f5a207d1ccd48ac13cfaf33221db,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6481878117524898336, guid: 7a25f5a207d1ccd48ac13cfaf33221db,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 34816
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a25f5a207d1ccd48ac13cfaf33221db, type: 3}

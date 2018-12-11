@@ -1,5 +1,17 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!4 &1192357679 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400002, guid: 2aca2273c0000df468ffe1d039f29c34,
+    type: 3}
+  m_PrefabInstance: {fileID: 1192357678}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1808973033 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400000, guid: 3a57a711a9c779648bf7f9036f3c6fd0,
+    type: 3}
+  m_PrefabInstance: {fileID: 1808973032}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &111421916
 GameObject:
   m_ObjectHideFlags: 0
@@ -523,12 +535,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!4 &1192357679 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 400002, guid: 2aca2273c0000df468ffe1d039f29c34,
-    type: 3}
-  m_PrefabInstance: {fileID: 1192357678}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1110161691
 GameObject:
   m_ObjectHideFlags: 0
@@ -649,12 +655,6 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!4 &1808973033 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 400000, guid: 3a57a711a9c779648bf7f9036f3c6fd0,
-    type: 3}
-  m_PrefabInstance: {fileID: 1808973032}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1194275629
 GameObject:
   m_ObjectHideFlags: 0

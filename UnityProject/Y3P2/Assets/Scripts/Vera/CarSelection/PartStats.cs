@@ -9,4 +9,6 @@ public class PartStats : MonoBehaviour
     public float acceleration;
     public float handling;
     public float driftMultiplier;
+
+    [SerializeField] private Transform animBody;
 }

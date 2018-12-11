@@ -151,16 +151,37 @@ public class CarSelection : MonoBehaviour
     private void Car()
     {
         GameObject temp = car;
-        print(CarSelectionManager.instance.carObjects.Count);
-        print(myPlayer.carLoc);
         car = Instantiate(CarSelectionManager.instance.carObjects[currentCarIndex], myPlayer.carLoc);
         car.transform.parent = myPlayer.carLoc;
         //myPlayer.carAnim = car.GetComponentInChildren<CarAnim>();
         car.layer = myLayer;
-        foreach (Transform child in car.transform)
+        foreach (Transform child in myPlayer.transform)
         {
-            print(child.gameObject);
             child.gameObject.layer = myLayer;
+            foreach (Transform child2 in child)
+            {
+                child2.gameObject.layer = myLayer;
+                foreach (Transform child3 in child2)
+                {
+                    child3.gameObject.layer = myLayer;
+                    foreach (Transform child4 in child3)
+                    {
+                        child4.gameObject.layer = myLayer;
+                        foreach (Transform child5 in child4)
+                        {
+                            child5.gameObject.layer = myLayer;
+                            foreach (Transform child6 in child5)
+                            {
+                                child6.gameObject.layer = myLayer;
+                                foreach (Transform child7 in child6)
+                                {
+                                    child7.gameObject.layer = myLayer;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
         if (temp != null)
         {
@@ -199,6 +220,10 @@ public class CarSelection : MonoBehaviour
         foreach (Transform child in wheels.transform)
         {
             child.gameObject.layer = myLayer;
+            foreach (Transform child2 in child)
+            {
+                child2.gameObject.layer = myLayer;
+            }
         }
         if(temp != null)
         {

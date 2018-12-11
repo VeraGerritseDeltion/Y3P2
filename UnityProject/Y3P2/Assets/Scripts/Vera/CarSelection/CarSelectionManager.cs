@@ -31,7 +31,6 @@ public class CarSelectionManager : MonoBehaviour
         {
             allPanels[i].SetActive(false);
         }
-        print(carObjects.Count);
     }
 
     public void AddPlayer(int controler)

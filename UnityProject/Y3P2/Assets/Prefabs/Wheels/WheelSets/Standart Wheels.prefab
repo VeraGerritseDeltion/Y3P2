@@ -194,6 +194,7 @@ MonoBehaviour:
   - {fileID: 3208862856499481197}
   - {fileID: 3945266340479899193}
   - {fileID: 4510863780592019404}
+  maxSpd: 300
 --- !u!114 &6112220609958803275
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,6 +212,7 @@ MonoBehaviour:
   acceleration: 50
   handling: 0.75
   driftMultiplier: 0.75
+  animBody: {fileID: 0}
 --- !u!1 &7361310975824259821 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 446378127636123270, guid: 229a06876de19094c9d52c4acbacdeb9,
