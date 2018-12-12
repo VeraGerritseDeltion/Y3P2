@@ -210,8 +210,8 @@ MonoBehaviour:
   speed: 150
   weight: 400
   acceleration: 50
-  handling: 0.75
-  driftMultiplier: 0.75
+  handling: 0.25
+  driftMultiplier: 1.5
   animBody: {fileID: 0}
 --- !u!1 &7361310975824259821 stripped
 GameObject:

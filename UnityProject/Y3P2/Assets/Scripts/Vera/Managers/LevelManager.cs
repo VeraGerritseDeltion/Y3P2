@@ -24,7 +24,7 @@ public class LevelManager : MonoBehaviour
         {
             if (aP.Count > i)
             {
-                GameObject nP = Instantiate(aP[i], currentLevel.startLocations[i].position, Quaternion.identity);
+                GameObject nP = Instantiate(aP[i], currentLevel.startLocations[i]);
                 Player p = nP.GetComponent<Player>();
                 p.myCam.enabled = true;
                 PlayerManager.instance.AddPlayer(p);
@@ -32,7 +32,7 @@ public class LevelManager : MonoBehaviour
             }
             else
             {
-                Instantiate(AI, currentLevel.startLocations[i].position, Quaternion.identity);
+                Instantiate(AI, currentLevel.startLocations[i]);
             }
         }
         print(aP.Count + " aaaaaaaaaaaaaa");

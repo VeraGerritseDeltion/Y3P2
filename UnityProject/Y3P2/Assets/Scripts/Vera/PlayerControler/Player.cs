@@ -80,6 +80,8 @@ public class Player : MonoBehaviour {
         transform.Translate(currentSpeed, 0, 0);
     }
 
+    private float driftAmount;
+
     private void Turn()
     {
         Drift();
@@ -102,7 +104,6 @@ public class Player : MonoBehaviour {
         }
         if (wheelsAnim != null)
         {
-            print("wheeee");
             wheelsAnim.Turn(hor);
         }
         transform.Rotate(0, hor, 0);
@@ -110,36 +111,61 @@ public class Player : MonoBehaviour {
 
     private bool left;
     private bool right;
+    private bool driftja;
 
     private void Drift()
     {
+        
         if(currentSpeed != 0)
         {
             if (Input.GetButton("C" + playerNum.ToString() + " BR"))
             {
                 if(Input.GetAxis("C" + playerNum.ToString() + " Hor") > 0 && !right)
                 {
-                    h = Mathf.Lerp(-1, 1, h + 0.1f);
+                    if (!driftja)
+                    {
+                        carAnim.carAnimator.SetBool("Drifting", true);
+                        driftja = true;
+                    }
+                    print(h);
+                    h = Mathf.Lerp(-1, 1, h + 0.0001f);
+                    driftAmount = h;
                     hor = -h * myCar.handling * myCar.driftMultiplier;
+                    carAnim.carAnimator.SetFloat("HorAxis", -driftAmount);
                     drifting = true;
                     left = true;
-                    carAnim.carAnimator.SetTrigger("DriftR");
                 }
                 else if(Input.GetAxis("C" + playerNum.ToString() + " Hor") < 0 && !left)
                 {
-                    h = Mathf.Lerp(-1, 1, h - 0.1f);
+                    if (!driftja)
+                    {
+                        carAnim.carAnimator.SetBool("Drifting", true);
+                        driftja = true;
+                    }
+                    h = Mathf.Lerp(-1, 1, h - 0.000001f);
+                    carAnim.carAnimator.SetFloat("HorAxis", driftAmount);
                     hor = h * myCar.handling * myCar.driftMultiplier;
                     drifting = true;
                     right = true;
-                    carAnim.carAnimator.SetTrigger("DriftR");
                 }
             }
             else
             {
+                if(driftAmount > 0)
+                {
+                    driftAmount = Mathf.Lerp(0, 1, driftAmount - 0.001f);
+                    carAnim.carAnimator.SetFloat("HorAxis", driftAmount);
+                }
+                else if(driftAmount < 0)
+                {
+                    driftAmount = Mathf.Lerp(-1, 0, driftAmount + 0.001f);
+                    carAnim.carAnimator.SetFloat("HorAxis", driftAmount);
+                }
                 right = false;
                 left = false;
                 drifting = false;
-                carAnim.carAnimator.SetTrigger("StopDrift");
+                carAnim.carAnimator.SetBool("Drifting", false);
+                driftja = false;
             }
         }
 
