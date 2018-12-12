@@ -5,17 +5,17 @@ ModelImporter:
   fileIDToRecycleName:
     100000: 3D_Car_Red
     100002: //RootNode
-    100004: 3D_Steer
+    100004: Steer
     400000: 3D_Car_Red
     400002: //RootNode
-    400004: 3D_Steer
+    400004: Steer
     2100000: 01 - Default
     2300000: 3D_Car_Red
-    2300002: 3D_Steer
+    2300002: Steer
     3300000: 3D_Car_Red
-    3300002: 3D_Steer
+    3300002: Steer
     4300000: 3D_Car_Red
-    4300002: 3D_Steer
+    4300002: Steer
     7400000: Take 001
     9500000: //RootNode
   externalObjects: {}
