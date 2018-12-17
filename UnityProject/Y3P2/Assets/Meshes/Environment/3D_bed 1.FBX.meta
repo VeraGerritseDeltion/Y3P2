@@ -1,15 +1,13 @@
 fileFormatVersion: 2
-guid: a0eaa6688a7445448a4557b2edc8eda8
+guid: d1f704cbf638982438fb379fb4a70ca9
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: 3D_Bed
-    100002: //RootNode
-    400000: 3D_Bed
-    400002: //RootNode
+    100000: //RootNode
+    400000: //RootNode
     2100000: mat_default
-    2300000: 3D_Bed
-    3300000: 3D_Bed
+    2300000: //RootNode
+    3300000: //RootNode
     4300000: 3D_Bed
   externalObjects: {}
   materials:
