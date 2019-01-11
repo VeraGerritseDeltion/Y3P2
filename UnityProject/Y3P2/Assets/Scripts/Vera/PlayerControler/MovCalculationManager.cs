@@ -11,8 +11,8 @@ public class MovCalculationManager : MonoBehaviour
     private float maxAcceleration = 450;
     private float minAcceleration = 350;
 
-    private float maxAngle = 55;
-    private float minAngle = 35;
+    private float maxAngle = 7;
+    private float minAngle = 2;
 
     private void Awake()
     {

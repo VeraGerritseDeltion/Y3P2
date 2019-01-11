@@ -13,7 +13,7 @@ public class CarStats : MonoBehaviour
     [Header("accelatation, between 0 and 100")]
     public float acceleration = 50f;
 
-    [Header("handling, 35 between and 55")]
+    [Header("handling, 2 between and 7")]
     public float handling = 45f;
 
     [Header("drifting?")]

@@ -25,8 +25,8 @@ public class Player : MonoBehaviour {
 	void Start () {
 		
 	}
-	
-	void Update ()
+
+    void Update()
     {
         if (GameManager.instance != null)
         {
