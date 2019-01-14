@@ -20,6 +20,8 @@ namespace AI
         private float brakingDistance = 0.3f, wheelFriction = 0.4f;
 
         [Header("Steering"), SerializeField]
+        private LayerMask mask;
+        [SerializeField]
         private float maxSteerAngle = 45f;
         [SerializeField]
         private Transform raycasterLeft, raycasterHalfLeft, raycasterMidLeft, raycasterMid, raycasterMidRight, raycasterHalfRight, raycasterRight;
@@ -45,13 +47,14 @@ namespace AI
         private float stoppingDistance;
         private Vector3? extraWaypoint = null;
         private bool left, halfLeft, midLeft, mid, midRight, halfRight, right, objectToTheRight;
-
         private float distanceToWaypoint = 1f;
+        private Rigidbody rb;
 
         private void Start()
         {
             path = FindObjectOfType<Path>().GetPath();
             currentWaypoint = 0;
+            rb = GetComponent<Rigidbody>();
         }
 
         private void Update()
@@ -70,8 +73,7 @@ namespace AI
         
         private bool Raycast(Vector3 position, Vector3 direction)
         {
-
-            if (Physics.Raycast(position, direction, raycastLenght))
+            if (Physics.Raycast(position, direction, raycastLenght, mask))
             {
                 Debug.DrawRay(position, direction * raycastLenght, Color.red);
                 return true;
@@ -162,7 +164,7 @@ namespace AI
         {
             Vector3 pointO = path[currentWaypoint];
             Vector3 pointT = path[(currentWaypoint < path.Length - 1) ? currentWaypoint + 1 : 0];
-            
+
             float angleO = GetSteerAngle(pointO);
             float angleT = GetSteerAngle(pointT);
             float result = angleT - angleO;
@@ -213,10 +215,15 @@ namespace AI
         private void OnCollisionEnter(Collision collision)
         {
             print(name + " collided with " + collision.transform.name);
+            Vector3 heading = collision.transform.position - transform.position;
+
             if (collision.transform.tag == "Car")
             {
-                Vector3 heading = collision.transform.position - transform.position;
                 collision.transform.GetComponent<Rigidbody>().AddForceAtPosition((heading / heading.magnitude) * motorTorque * impactForce, collision.contacts[0].point);
+            }
+            else if (collision.transform.tag == "Obstacle")
+            {
+                rb.AddForceAtPosition((heading / heading.magnitude) * motorTorque * impactForce, collision.contacts[0].point);
             }
         }
     }
