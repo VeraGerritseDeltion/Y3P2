@@ -1184,6 +1184,16 @@ PrefabInstance:
       propertyPath: locations.Array.data[3]
       value: 
       objectReference: {fileID: 7140851087003789136}
+    - target: {fileID: 6584811796673908514, guid: 673bbc6baa9507548818d69b39cd9112,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7042518447549194461, guid: 673bbc6baa9507548818d69b39cd9112,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 673bbc6baa9507548818d69b39cd9112, type: 3}
 --- !u!1001 &7468787556018114362

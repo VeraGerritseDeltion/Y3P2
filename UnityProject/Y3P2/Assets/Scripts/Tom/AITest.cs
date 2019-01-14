@@ -75,12 +75,12 @@ namespace AI
         {
             if (Physics.Raycast(position, direction, raycastLenght, mask))
             {
-                Debug.DrawRay(position, direction * raycastLenght, Color.red);
+                //Debug.DrawRay(position, direction * raycastLenght, Color.red);
                 return true;
             }
             else
             {
-                Debug.DrawRay(position, direction * raycastLenght, Color.white);
+                //Debug.DrawRay(position, direction * raycastLenght, Color.white);
                 return false;
             }
         }
@@ -224,6 +224,21 @@ namespace AI
             else if (collision.transform.tag == "Obstacle")
             {
                 rb.AddForceAtPosition((heading / heading.magnitude) * motorTorque * impactForce, collision.contacts[0].point);
+            }
+        }
+
+        private void OnDrawGizmos()
+        {
+            if (EditorApplication.isPlaying)
+            {
+                if(extraWaypoint != null)
+                {
+                    Gizmos.DrawLine(raycasterMid.position, extraWaypoint.Value);
+                }
+                else
+                {
+                    Gizmos.DrawLine(raycasterMid.position, path[currentWaypoint]);
+                }
             }
         }
     }
