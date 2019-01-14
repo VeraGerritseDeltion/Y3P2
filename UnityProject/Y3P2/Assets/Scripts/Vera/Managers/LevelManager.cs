@@ -35,7 +35,6 @@ public class LevelManager : MonoBehaviour
                 Instantiate(AI, currentLevel.startLocations[i]);
             }
         }
-        print(aP.Count + " aaaaaaaaaaaaaa");
         if (aP.Count == 1)
         {
             OnePlayer();
