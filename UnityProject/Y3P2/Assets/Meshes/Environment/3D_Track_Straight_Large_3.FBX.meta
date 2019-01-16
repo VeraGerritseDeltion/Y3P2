@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e0a1609ae42a47342bb51fea439de9aa
+guid: 5b79b6228005cc34f88a3835af48185d
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -8,7 +8,7 @@ ModelImporter:
     2100000: mat_default
     2300000: //RootNode
     3300000: //RootNode
-    4300000: 3D_Finish
+    4300000: 3D_Track_Straight_Large_3
   externalObjects: {}
   materials:
     importMaterials: 1

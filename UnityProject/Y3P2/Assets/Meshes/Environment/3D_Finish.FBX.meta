@@ -3,15 +3,11 @@ guid: a98e9b052e9e7c541b7ec55bb18d5514
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: 3D_Finish
-    100002: //RootNode
-    100004: track002
-    400000: 3D_Finish
-    400002: //RootNode
-    400004: track002
+    100000: //RootNode
+    400000: //RootNode
     2100000: mat_default
-    2300000: 3D_Finish
-    3300000: 3D_Finish
+    2300000: //RootNode
+    3300000: //RootNode
     4300000: 3D_Finish
   externalObjects: {}
   materials:
