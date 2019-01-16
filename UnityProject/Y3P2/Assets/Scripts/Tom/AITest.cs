@@ -48,6 +48,7 @@ namespace AI
         private Vector3? extraWaypoint = null;
         private bool left, halfLeft, midLeft, mid, midRight, halfRight, right, objectToTheRight;
         private float distanceToWaypoint = 1f;
+        private float dTW;
         private Rigidbody rb;
 
         private void Start()
@@ -70,17 +71,17 @@ namespace AI
 
             Raycasting();
         }
-        
+
         private bool Raycast(Vector3 position, Vector3 direction)
         {
             if (Physics.Raycast(position, direction, raycastLenght, mask))
             {
-                //Debug.DrawRay(position, direction * raycastLenght, Color.red);
+                Debug.DrawRay(position, direction * raycastLenght, Color.red);
                 return true;
             }
             else
             {
-                //Debug.DrawRay(position, direction * raycastLenght, Color.white);
+                Debug.DrawRay(position, direction * raycastLenght, Color.white);
                 return false;
             }
         }
@@ -170,16 +171,16 @@ namespace AI
             float result = angleT - angleO;
             if (result > 30f || result < -30f || angleO > 30f || angleO < -30f)
             {
-                distanceToWaypoint =  Vector3.Distance(pointO, transform.position) / Vector3.Distance(pointT, pointO);
-
-                //if ((pointO - transform.position).magnitude <= (speed * speed / (250 * wheelFriction)) / 2)
-                if(distanceToWaypoint <= brakingDistance)
+                dTW = Vector3.Distance(pointO, transform.position) / Vector3.Distance(pointT, pointO);
+                if(dTW == distanceToWaypoint)
                 {
-                    isBraking = true;
+                    isBraking = false;
                 }
                 else
                 {
-                    isBraking = false;
+                    distanceToWaypoint = dTW;
+
+                    isBraking = distanceToWaypoint <= brakingDistance ? true : false;
                 }
             }
             else
@@ -198,10 +199,9 @@ namespace AI
 
         private void CheckCurrentWaypoint()
         {
-            heading = path[currentWaypoint] - transform.position;
-            if(heading.sqrMagnitude < waypointRange * waypointRange)
+            if (distanceToWaypoint < waypointRange)
             {
-                if(currentWaypoint < path.Length - 1)
+                if (currentWaypoint < path.Length - 1)
                 {
                     currentWaypoint++;
                 }
@@ -215,30 +215,15 @@ namespace AI
         private void OnCollisionEnter(Collision collision)
         {
             print(name + " collided with " + collision.transform.name);
-            Vector3 heading = collision.transform.position - transform.position;
+            heading = collision.transform.position - transform.position;
 
             if (collision.transform.tag == "Car")
             {
-                collision.transform.GetComponent<Rigidbody>().AddForceAtPosition((heading / heading.magnitude) * motorTorque * impactForce, collision.contacts[0].point);
+                collision.transform.GetComponent<Rigidbody>().AddForceAtPosition(heading / heading.magnitude * motorTorque * impactForce, collision.contacts[0].point);
             }
             else if (collision.transform.tag == "Obstacle")
             {
-                rb.AddForceAtPosition((heading / heading.magnitude) * motorTorque * impactForce, collision.contacts[0].point);
-            }
-        }
-
-        private void OnDrawGizmos()
-        {
-            if (EditorApplication.isPlaying)
-            {
-                if(extraWaypoint != null)
-                {
-                    Gizmos.DrawLine(raycasterMid.position, extraWaypoint.Value);
-                }
-                else
-                {
-                    Gizmos.DrawLine(raycasterMid.position, path[currentWaypoint]);
-                }
+                rb.AddForceAtPosition(-heading / -heading.magnitude * motorTorque * (impactForce * 2), collision.contacts[0].point);
             }
         }
     }
