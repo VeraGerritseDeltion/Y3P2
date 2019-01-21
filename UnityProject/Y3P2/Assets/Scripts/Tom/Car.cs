@@ -51,19 +51,24 @@ public abstract class Car : MonoBehaviour
             wheelColliders[0].collider.motorTorque = 0f;
             wheelColliders[1].collider.motorTorque = 0f;
         }
-        
+
+        wheelColliders[0].collider.brakeTorque = shouldBrake ? brakeMoterTorque : 0f;
+        wheelColliders[1].collider.brakeTorque = shouldBrake ? brakeMoterTorque : 0f;
         wheelColliders[2].collider.brakeTorque = shouldBrake ? brakeMoterTorque : 0f;
         wheelColliders[3].collider.brakeTorque = shouldBrake ? brakeMoterTorque : 0f;
     }
 
     private void Steering(float steerAngle)
     {
-        interpolation = steerSpeed * Time.fixedDeltaTime;
+        if(GetSpeedInput() != null)
+        {
+            interpolation = steerSpeed * Time.fixedDeltaTime;
 
-        newAngle = Mathf.SmoothStep(wheelColliders[0].collider.steerAngle, steerAngle, interpolation);
+            newAngle = Mathf.SmoothStep(wheelColliders[0].collider.steerAngle, steerAngle, interpolation);
 
-        wheelColliders[0].collider.steerAngle = newAngle;
-        wheelColliders[1].collider.steerAngle = newAngle;
+            wheelColliders[0].collider.steerAngle = newAngle;
+            wheelColliders[1].collider.steerAngle = newAngle;
+        }
     }
     #endregion
 
