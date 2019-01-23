@@ -19,17 +19,21 @@ public class KartPhysics : MonoBehaviour
     [SerializeField] private Transform[] wheels;
     [SerializeField] private Vector2 wheelHeight;
     [SerializeField] private float wheelSmooth = 0.15f;
+    [SerializeField] private float turn = 40f;
+    [SerializeField] private Transform character;
+    [SerializeField] private float characterAngle = 15f;
 
     [Header("Grip"),SerializeField] private float velocityCheck = 0.5f;
     [Range(0, 1), SerializeField] private float velocityDecrease = 0.95f;
     [SerializeField] private float grip = 0.5f;
     [SerializeField] private float gripDrift = 0.3f;
-
-    [Header("Gravity"), SerializeField] private float customGravityLenght = 5f;
-    [SerializeField] private float gravityStrenght = 9.81f;
+    [SerializeField] private float slowValue = 0.7f;
 
     [Header("Damaged"),SerializeField] private float damagedDuration = 3f;
     [SerializeField] private int spins = 3;
+
+    [Header("Stabilizing"),SerializeField] private float stabilizer = 0.3f;
+    [SerializeField] private float stabilzingSpeed = 2f;
 
     private PlayerInput playerInput;
     private RaycastHit rh;
@@ -42,6 +46,7 @@ public class KartPhysics : MonoBehaviour
     private float refVelocity;
     private bool damaged;
     private Vector3 rot;
+    private bool slow;
 
     [MenuItem("Tools/Create Empty Objects %q")]
     public static void CreateCorners()
@@ -119,19 +124,13 @@ public class KartPhysics : MonoBehaviour
             else
             {
                 float rotation = playerInput.horizontal * 40f * (playerInput.backward ? -1 : 1);
-
+                
                 wheels[0].localEulerAngles = new Vector3(0, Mathf.SmoothDampAngle(wheels[0].localEulerAngles.y, rotation, ref refVelocity, wheelSmooth));
                 wheels[1].localEulerAngles = new Vector3(0, Mathf.SmoothDampAngle(wheels[1].localEulerAngles.y, rotation, ref refVelocity, wheelSmooth));
             }
 
-            if (touchingGround > 0)
-            {
-                rb.velocity += Vector3.Project(Physics.gravity, groundNormal) * Time.deltaTime;
-            }
-            else
-            {
-                rb.velocity += Physics.gravity * Time.deltaTime;
-            }
+            character.localEulerAngles = new Vector3(character.localEulerAngles.x, character.localEulerAngles.y, Mathf.SmoothDampAngle(character.localEulerAngles.z, characterAngle * playerInput.horizontal, ref refVelocity, wheelSmooth));
+            Stabilizer();
         }
     }
 
@@ -145,11 +144,21 @@ public class KartPhysics : MonoBehaviour
             drifting = Input.GetButton("C" + playerNum + " LB")
         };
     }
+
+    private void Stabilizer()
+    {
+        Vector3 predictedUp = Quaternion.AngleAxis(rb.angularVelocity.magnitude * Mathf.Rad2Deg * stabilizer / stabilzingSpeed, rb.angularVelocity) * transform.up;
+
+        Vector3 torqueVector = Vector3.Cross(predictedUp, Vector3.up);
+        rb.AddTorque(torqueVector * stabilzingSpeed * stabilzingSpeed);
+    }
     
     private void Suspension()
     {
         touchingGround = 0;
         groundNormal = Vector3.zero;
+
+        slow = false;
 
         for (int i = 0; i < corners.Length; i++)
         {
@@ -179,6 +188,10 @@ public class KartPhysics : MonoBehaviour
             //Debug.DrawLine(origin, rh.point);
             touchingGround++;
             groundNormal += rh.normal;
+            if (rh.transform.CompareTag("Glue"))
+            {
+                slow = true;
+            }
             return 1 - (rh.distance / raycastLenght);
         }
         else return 0;
@@ -190,11 +203,11 @@ public class KartPhysics : MonoBehaviour
         {
             if(centerOfMass != null)
             {
-                rb.AddForceAtPosition(Vector3.ProjectOnPlane(transform.forward, groundNormal) * enginePower, centerOfMass.position, ForceMode.Acceleration);
+                rb.AddForceAtPosition(Vector3.ProjectOnPlane(transform.forward, groundNormal) * (slow ?  enginePower * slowValue : enginePower), centerOfMass.position, ForceMode.Acceleration);
             }
             else
             {
-                rb.AddForce(Vector3.ProjectOnPlane(transform.forward, groundNormal) * enginePower, ForceMode.Acceleration);
+                rb.AddForce(Vector3.ProjectOnPlane(transform.forward, groundNormal) * (slow ? enginePower * slowValue : enginePower), ForceMode.Acceleration);
             }
             
         }
@@ -202,11 +215,11 @@ public class KartPhysics : MonoBehaviour
         {
             if (centerOfMass != null)
             {
-                rb.AddForceAtPosition(Vector3.ProjectOnPlane(-transform.forward, groundNormal) * enginePower, centerOfMass.position, ForceMode.Acceleration);
+                rb.AddForceAtPosition(Vector3.ProjectOnPlane(-transform.forward, groundNormal) * (slow ? enginePower * slowValue : enginePower), centerOfMass.position, ForceMode.Acceleration);
             }
             else
             {
-                rb.AddForce(Vector3.ProjectOnPlane(-transform.forward, groundNormal) * enginePower, ForceMode.Acceleration);
+                rb.AddForce(Vector3.ProjectOnPlane(-transform.forward, groundNormal) * (slow ? enginePower * slowValue : enginePower), ForceMode.Acceleration);
             }
         }
     }
@@ -237,6 +250,16 @@ public class KartPhysics : MonoBehaviour
         rb.isKinematic = false;
         bc.enabled = true;
         damaged = false;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        var heading = collision.transform.position - transform.position;
+
+        if (collision.transform.CompareTag("Car"))
+        {
+            collision.transform.GetComponent<Rigidbody>().AddForceAtPosition(heading / heading.magnitude * enginePower * 5, collision.contacts[0].point);
+        }
     }
 }
 
