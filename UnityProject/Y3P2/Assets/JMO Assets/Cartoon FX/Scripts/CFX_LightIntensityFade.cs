@@ -26,7 +26,7 @@ public class CFX_LightIntensityFade : MonoBehaviour
 	private float p_lifetime = 0.0f;
 	private float p_delay;
 	
-	void Start()
+	void Startu()
 	{
 		baseIntensity = GetComponent<Light>().intensity;
 	}

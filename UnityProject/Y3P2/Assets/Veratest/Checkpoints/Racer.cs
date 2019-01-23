@@ -23,7 +23,7 @@ public class Racer : MonoBehaviour
     public GameObject myItem;
 
     public GameObject testItem;
-
+    public Animator anim;
     private void Start()
     {
         number = CheckpointManager.instance.GetNumber(this);
@@ -46,11 +46,22 @@ public class Racer : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.I))
         {
-            testItem.GetComponent<Item>().Use(this);
+            Item ni = testItem.GetComponent<Item>();
+            if(ni == null)
+            {
+               ni = testItem.GetComponentInChildren<Item>();
+            }
+            ni.Use(this);
         }
         if (Input.GetKeyUp(KeyCode.I))
         {
-            myItem.GetComponent<Item>().UseItem();
+            Item ni = myItem.GetComponent<Item>();
+            if(ni == null)
+            {
+                ni = myItem.GetComponentInChildren<Item>();
+            }
+            print(ni);
+            ni.UseItem();
         }
     }
 

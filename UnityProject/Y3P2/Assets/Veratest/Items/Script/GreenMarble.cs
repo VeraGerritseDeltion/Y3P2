@@ -8,19 +8,26 @@ public class GreenMarble : Item
     Rigidbody myR;
     int wallsHit;
     public int maxWalls;
+
     public override void UseItem()
     {
+        myRacer.anim.SetTrigger("Over");
+        myRacer.anim.speed = 2;
+        StartCoroutine(Fire());
+    }
+
+    IEnumerator Fire()
+    {
+        yield return new WaitForSeconds(0.3f);
         gameObject.transform.parent = null;
-        gameObject.transform.position = myRacer.useLocation.position;
-        gameObject.transform.rotation = myRacer.gameObject.transform.rotation;
         myR = gameObject.GetComponent<Rigidbody>();
         myR.isKinematic = false;
         myR.AddForce(myRacer.gameObject.transform.forward * speed);
-
+        myRacer.anim.speed = 1;
         myRacer.myItem = null;
     }
 
-    private void OnCollisionEnter(Collision collision)
+        private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.tag == "Car")
         {
