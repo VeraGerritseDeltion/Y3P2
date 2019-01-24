@@ -21,11 +21,12 @@ public class KartPhysics : MonoBehaviour
     [SerializeField] private float wheelSmooth = 0.15f;
     [SerializeField] private float turn = 40f;
     [SerializeField] private Transform character;
-    [SerializeField] private float characterAngle = 15f;
+    [SerializeField] private float characterAngle = 7.5f;
     [SerializeField] private float characterRotSpeed = 0.05f;
 
     [Header("Grip"),SerializeField] private float velocityCheck = 0.5f;
     [Range(0, 1), SerializeField] private float velocityDecrease = 0.95f;
+    [Range(0, 1), SerializeField] private float angularVelocityDecrease = 0.95f;
     [SerializeField] private float grip = 0.5f;
     [SerializeField] private float gripDrift = 0.3f;
     [SerializeField] private float slowValue = 0.7f;
@@ -75,7 +76,7 @@ public class KartPhysics : MonoBehaviour
         }
         else
         {
-            Debug.Log("Selected object doesn't have a BoxCollider!");
+            Debug.LogError("Selected object doesn't have a BoxCollider!");
             return false;
         }
     }
@@ -113,7 +114,9 @@ public class KartPhysics : MonoBehaviour
 
             if (Vector3.Distance(rb.velocity, Vector3.zero) > velocityCheck && ((playerInput.forward || playerInput.backward) || touchingGround < 1))
             {
-                rb.AddTorque(transform.up * rotateSpeed * playerInput.horizontal, ForceMode.Acceleration);
+                rb.AddTorque(transform.up * (playerInput.drifting ? rotateSpeed * 2 : rotateSpeed) * playerInput.horizontal, ForceMode.Acceleration);
+                //rb.MoveRotation(rb.rotation * Quaternion.Euler(Vector3.up * rotateSpeed * playerInput.horizontal));
+                
                 if (playerInput.forward)
                 {
                     z = -playerInput.horizontal * characterAngle;
@@ -124,16 +127,23 @@ public class KartPhysics : MonoBehaviour
                     z = playerInput.horizontal * characterAngle;
                     x = characterAngle;
                 }
+
+                if (playerInput.drifting)
+                {
+                    z *= 2;
+                }
             }
 
             if (!playerInput.forward && !playerInput.backward && touchingGround > 0)
             {
-                rb.velocity = new Vector3(rb.velocity.x * velocityDecrease, rb.velocity.y * velocityDecrease, rb.velocity.z * velocityDecrease);
+                rb.velocity *= velocityDecrease;
             }
 
             if (playerInput.horizontal == 0 && touchingGround > 0)
             {
-                rb.angularVelocity = new Vector3(rb.angularVelocity.x, rb.angularVelocity.y, rb.angularVelocity.z) * velocityDecrease;
+                //Debug.Log(new Vector3(rb.angularVelocity.x, rb.angularVelocity.y, rb.angularVelocity.z) * velocityDecrease);
+                //rb.angularVelocity = Vector3.Slerp(rb.angularVelocity, new Vector3(rb.angularVelocity.x, rb.angularVelocity.y, rb.angularVelocity.z) * velocityDecrease, characterRotSpeed); //change!
+                //rb.angularVelocity *= angularVelocityDecrease;
             }
             else
             {
@@ -142,11 +152,11 @@ public class KartPhysics : MonoBehaviour
                 wheels[0].localEulerAngles = new Vector3(0, Mathf.SmoothDampAngle(wheels[0].localEulerAngles.y, rotation, ref refVelocity, wheelSmooth));
                 wheels[1].localEulerAngles = new Vector3(0, Mathf.SmoothDampAngle(wheels[1].localEulerAngles.y, rotation, ref refVelocity, wheelSmooth));
             }
-            
-            Stabilizer();
-        }
 
-        //character.localRotation = Quaternion.Slerp(character.localRotation, Quaternion.Euler(new Vector3(x, 0, z)), characterRotSpeed);
+            rb.angularVelocity *= angularVelocityDecrease;
+            //Stabilizer();
+        }
+        character.localRotation = Quaternion.Slerp(character.localRotation, Quaternion.Euler(new Vector3(x, 0, z)), characterRotSpeed);
     }
 
     private PlayerInput GetPlayerInput()
@@ -179,16 +189,22 @@ public class KartPhysics : MonoBehaviour
         {
             float compressionRatio = GetCompressionRatio(corners[i].position, -corners[i].up);
 
+            
+
             Vector3 cF = Vector3.Project(rb.GetPointVelocity(corners[i].position), transform.up); // Calculate the current suspension force.
             Vector3 nF = transform.up * compressionRatio * suspensionStrenght; // Calculate the new suspension force.
 
             rb.AddForceAtPosition(nF - cF, corners[i].position, ForceMode.Acceleration);
-            
+
             wheels[i].localPosition = new Vector3(wheels[i].localPosition.x, Mathf.Lerp(wheelHeight.x, wheelHeight.y, compressionRatio), wheels[i].localPosition.z);
 
-            Debug.DrawLine(rh.point, rh.point + Vector3.ProjectOnPlane(-rb.GetPointVelocity(corners[i].position), rh.normal) * (playerInput.drifting ? gripDrift : grip), Color.red);
-            rb.AddForceAtPosition(Vector3.ProjectOnPlane(-rb.GetPointVelocity(corners[i].position), rh.normal) * (playerInput.drifting ? gripDrift : grip), rh.point, ForceMode.Acceleration);
+            //Debug.DrawLine(rh.point, rh.point + Vector3.ProjectOnPlane(-rb.GetPointVelocity(corners[i].position), rh.normal) * (playerInput.drifting ? gripDrift : grip), Color.red);
+            //rb.AddForceAtPosition(Vector3.ProjectOnPlane(-rb.GetPointVelocity(corners[i].position), rh.normal) * (playerInput.drifting ? gripDrift : grip), rh.point, ForceMode.Acceleration);
         }
+
+        Debug.DrawLine(centerOfMass.position + Vector3.up, centerOfMass.position + Vector3.up + Vector3.ProjectOnPlane(rb.velocity, rh.normal), Color.red);
+        Debug.DrawLine(centerOfMass.position + Vector3.up, centerOfMass.position + Vector3.up + Vector3.ProjectOnPlane(-rb.velocity, rh.normal) * grip, Color.blue);
+        rb.AddForceAtPosition(Vector3.ProjectOnPlane(-rb.velocity, rh.normal) * grip, centerOfMass.position, ForceMode.Acceleration);
 
         if(touchingGround > 0)
         {
@@ -216,30 +232,16 @@ public class KartPhysics : MonoBehaviour
     {
         if (playerInput.forward)
         {
-            if(centerOfMass != null)
-            {
-                rb.AddForceAtPosition(Vector3.ProjectOnPlane(transform.forward, groundNormal) * (slow ?  enginePower * slowValue : enginePower), centerOfMass.position, ForceMode.Acceleration);
-            }
-            else
-            {
-                rb.AddForce(Vector3.ProjectOnPlane(transform.forward, groundNormal) * (slow ? enginePower * slowValue : enginePower), ForceMode.Acceleration);
-            }
-            
+            rb.AddForceAtPosition(Vector3.ProjectOnPlane(transform.forward, groundNormal) * (slow ? enginePower * slowValue : enginePower), centerOfMass.position, ForceMode.Acceleration);
+
         }
         else if (playerInput.backward)
         {
-            if (centerOfMass != null)
-            {
-                rb.AddForceAtPosition(Vector3.ProjectOnPlane(-transform.forward, groundNormal) * (slow ? enginePower * slowValue : enginePower), centerOfMass.position, ForceMode.Acceleration);
-            }
-            else
-            {
-                rb.AddForce(Vector3.ProjectOnPlane(-transform.forward, groundNormal) * (slow ? enginePower * slowValue : enginePower), ForceMode.Acceleration);
-            }
+            rb.AddForceAtPosition(Vector3.ProjectOnPlane(-transform.forward, groundNormal) * (slow ? enginePower * slowValue : enginePower), centerOfMass.position, ForceMode.Acceleration);
         }
     }
 
-    private void Damaged()
+    public void Damaged()
     {
         StopCoroutine(Damage());
         StartCoroutine(Damage());
