@@ -130,7 +130,7 @@ public class KartPhysics : MonoBehaviour
 
                 if (playerInput.drifting)
                 {
-                    z *= 2;
+                    z *= 3;
                 }
             }
 
