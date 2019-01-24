@@ -22,6 +22,9 @@ public class Car_Char_Selection : MonoBehaviour
 
     bool cD;
 
+    [Header("Highlighter")]
+    public List<GameObject> highlights = new List<GameObject>();
+
     public void StartMe()
     {
         Beard();
@@ -97,6 +100,11 @@ public class Car_Char_Selection : MonoBehaviour
             if(Input.GetButtonDown("C" + controller + " A"))
             {
                 Car_Char_Sel_Manager.instance.NextCatergory(panel);
+            }
+
+            if(Input.GetButtonDown("C" + controller+ " B"))
+            {
+                Car_Char_Sel_Manager.instance.LastCatergory(panel);
             }
         }
         
