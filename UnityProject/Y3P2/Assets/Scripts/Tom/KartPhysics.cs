@@ -22,6 +22,7 @@ public class KartPhysics : MonoBehaviour
     [SerializeField] private float turn = 40f;
     [SerializeField] private Transform character;
     [SerializeField] private float characterAngle = 15f;
+    [SerializeField] private float characterRotSpeed = 0.05f;
 
     [Header("Grip"),SerializeField] private float velocityCheck = 0.5f;
     [Range(0, 1), SerializeField] private float velocityDecrease = 0.95f;
@@ -44,6 +45,7 @@ public class KartPhysics : MonoBehaviour
     // Orderd section!
     private Vector3 groundNormal;
     private float refVelocity;
+    private Vector3 refCharVelocity;
     private bool damaged;
     private Vector3 rot;
     private bool slow;
@@ -100,6 +102,8 @@ public class KartPhysics : MonoBehaviour
         playerInput = GetPlayerInput();
         Suspension();
 
+        float x = 0f, z = 0f;
+
         if (!damaged)
         {
             if (touchingGround > 1)
@@ -110,6 +114,16 @@ public class KartPhysics : MonoBehaviour
             if (Vector3.Distance(rb.velocity, Vector3.zero) > velocityCheck && ((playerInput.forward || playerInput.backward) || touchingGround < 1))
             {
                 rb.AddTorque(transform.up * rotateSpeed * playerInput.horizontal, ForceMode.Acceleration);
+                if (playerInput.forward)
+                {
+                    z = -playerInput.horizontal * characterAngle;
+                    x = -characterAngle;
+                }
+                else
+                {
+                    z = playerInput.horizontal * characterAngle;
+                    x = characterAngle;
+                }
             }
 
             if (!playerInput.forward && !playerInput.backward && touchingGround > 0)
@@ -128,10 +142,11 @@ public class KartPhysics : MonoBehaviour
                 wheels[0].localEulerAngles = new Vector3(0, Mathf.SmoothDampAngle(wheels[0].localEulerAngles.y, rotation, ref refVelocity, wheelSmooth));
                 wheels[1].localEulerAngles = new Vector3(0, Mathf.SmoothDampAngle(wheels[1].localEulerAngles.y, rotation, ref refVelocity, wheelSmooth));
             }
-
-            character.localEulerAngles = new Vector3(character.localEulerAngles.x, character.localEulerAngles.y, Mathf.SmoothDampAngle(character.localEulerAngles.z, characterAngle * playerInput.horizontal, ref refVelocity, wheelSmooth));
-            Stabilizer();
+            
+            //Stabilizer();
         }
+
+        character.localRotation = Quaternion.Slerp(character.localRotation, Quaternion.Euler(new Vector3(x, 0, z)), characterRotSpeed);
     }
 
     private PlayerInput GetPlayerInput()
