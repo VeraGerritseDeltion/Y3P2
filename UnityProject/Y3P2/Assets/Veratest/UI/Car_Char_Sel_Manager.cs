@@ -36,6 +36,7 @@ public class Car_Char_Sel_Manager : MonoBehaviour
     [Header("Panels")]
     public List<GameObject> CarSelection = new List<GameObject>();
     public List<GameObject> CharSelection = new List<GameObject>();
+    public List<TMP_Text> playerText = new List<TMP_Text>();
 
     [Header("Scripts")]
     public List<Car_Char_Selection> carChar = new List<Car_Char_Selection>();
@@ -87,30 +88,37 @@ public class Car_Char_Sel_Manager : MonoBehaviour
                 case CustomazationIndex.noControler:
                     CarSelection[i].SetActive(false);
                     CharSelection[i].SetActive(false);
+                    playerText[i].text = "Press B to play!";
                     break;
                 case CustomazationIndex.gender:
                     CarSelection[i].SetActive(false);
                     CharSelection[i].SetActive(true);
+                    playerText[i].text = "Select your character.";
                     break;
                 case CustomazationIndex.hat:
                     CarSelection[i].SetActive(false);
                     CharSelection[i].SetActive(true);
+                    playerText[i].text = "Select your character.";
                     break;
                 case CustomazationIndex.beard:
                     CarSelection[i].SetActive(false);
                     CharSelection[i].SetActive(true);
+                    playerText[i].text = "Select your character.";
                     break;
                 case CustomazationIndex.car:
                     CarSelection[i].SetActive(true);
                     CharSelection[i].SetActive(false);
+                    playerText[i].text = "Select your car.";
                     break;
                 case CustomazationIndex.wheels:
                     CarSelection[i].SetActive(true);
                     CharSelection[i].SetActive(false);
+                    playerText[i].text = "Select your car.";
                     break;
                 case CustomazationIndex.ready:
                     CarSelection[i].SetActive(false);
                     CharSelection[i].SetActive(false);
+                    playerText[i].text = "Ready to play!";
                     break;
             }
         }
@@ -148,9 +156,22 @@ public class Car_Char_Sel_Manager : MonoBehaviour
         }
     }
 
+    public void NextCatergory(int panel)
+    {
+        if (current[panel] != CustomazationIndex.ready)
+        {
+            current[panel] += 1;
+        }
+        print(current[panel]);
+    }
+
     public void AddPlayer(int panel, int con)
     {
-        current[panel] = CustomazationIndex.gender;
-        carChar[panel].controller = allControlers[panel];
+        //current[panel] = CustomazationIndex.gender;
+
+        carChar[panel].panel = panel;
+        carChar[panel].StartMe();
+        print(con);
+        carChar[panel].controller = con;
     }
 }

@@ -62,7 +62,7 @@ public class MainMenu : MonoBehaviour
     public void PlayButton()
     {
         UIManager.instance.OnMenuChanged(UIManager.MenuType.carSelect);
-        print("Play");
+
     }
 
     public void Options()
