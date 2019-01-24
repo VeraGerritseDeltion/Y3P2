@@ -58,8 +58,9 @@ public class InputManager : MonoBehaviour
         if (!exist)
         {
             allControlers.Add(index);
-            UIManager.instance.AddPlayer(allControlers.Count - 1);
-            CarSelectionManager.instance.AddPlayer(index);
+            //UIManager.instance.AddPlayer(allControlers.Count - 1);
+            //Car_Char_Sel_Manager.instance.AddPlayer(index);
+            //CarSelectionManager.instance.AddPlayer(index);
         }
     }
 }
