@@ -1186,6 +1186,11 @@ PrefabInstance:
       propertyPath: m_isInputParsingRequired
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3104266444024233130, guid: 77f8250c95136fe4b8ade21a8d33f3e0,
+        type: 3}
+      propertyPath: slowValue
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77f8250c95136fe4b8ade21a8d33f3e0, type: 3}
 --- !u!1 &220249973
@@ -5828,7 +5833,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allItems:
-  - {fileID: 1435727921977847646, guid: 19f22932549c83740874c09d8cc2991d, type: 3}
+  - {fileID: 2050883845204672568, guid: 364b6ea2d298875448ecd2d33539f9c5, type: 3}
   - {fileID: 6493404402981750652, guid: 753be13fbc4875e42ac915e976b69627, type: 3}
   - {fileID: 994927018, guid: ae27687930c90264f84cb20c70f07053, type: 3}
 --- !u!114 &1150771385
@@ -8191,6 +8196,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CheckPoint (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 5007772710146860936, guid: 9d44cef9a1709c6488716c09b0eea626,
+        type: 3}
+      propertyPath: finish
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5007772710146860937, guid: 9d44cef9a1709c6488716c09b0eea626,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8254,11 +8264,6 @@ PrefabInstance:
     - target: {fileID: 5007772710146860937, guid: 9d44cef9a1709c6488716c09b0eea626,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5007772710146860936, guid: 9d44cef9a1709c6488716c09b0eea626,
-        type: 3}
-      propertyPath: finish
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

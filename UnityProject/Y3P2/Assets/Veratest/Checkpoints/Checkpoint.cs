@@ -14,7 +14,8 @@ public class Checkpoint : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        Racer newInCp = other.gameObject.GetComponent<Racer>();
+        print("test1247859");
+        Racer newInCp = other.gameObject.GetComponentInChildren<Racer>();
 
         if(newInCp != null)
         {
@@ -22,7 +23,7 @@ public class Checkpoint : MonoBehaviour
             {
                 CheckpointManager.instance.ResetLap(newInCp);
             }
-            if (!myRacers.Contains(newInCp) && CheckLastCheckpoint(newInCp))
+            if (!myRacers.Contains(newInCp) && CheckLastCheckpoint(newInCp)||CheckpointManager.instance.FirstCheck(newInCp))
             {
                 myRacers.Add(newInCp);
             }

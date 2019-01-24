@@ -14,7 +14,7 @@ public class Glue : Item
 
     public void Stain()
     {
-        GameObject stain = Instantiate(gluestain, new Vector3( myRacer.itemLocation.position.x , myRacer.itemLocation.position.y - 0.69f, myRacer.itemLocation.position.z), Quaternion.Euler(0, Random.Range(0, 360), 0));
+        GameObject stain = Instantiate(gluestain, new Vector3( myRacer.itemLocation.position.x , myRacer.itemLocation.position.y - 0.8f, myRacer.itemLocation.position.z), Quaternion.Euler(0, Random.Range(0, 360), 0));
     }
     
     public void DestroyObject()

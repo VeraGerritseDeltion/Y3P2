@@ -35,7 +35,8 @@ public class IGP_Manager : MonoBehaviour
 
     public void CurC(int player, int lap)
     {
-        allIGP[player - 1].Position(lap);
+        allIGP[player - 1].Lap(lap);
+        print("test");
     }
 
     public void ItemImage(int player,Sprite image)

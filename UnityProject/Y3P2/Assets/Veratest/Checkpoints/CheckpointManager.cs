@@ -11,7 +11,7 @@ public class CheckpointManager : MonoBehaviour
     public List<int> laps = new List<int>();
     public List<Racer> finished = new List<Racer>();
     public List<Racer> racers = new List<Racer>();
-
+    private List<bool> fc = new List<bool>();
 
 
     private void Awake()
@@ -31,7 +31,16 @@ public class CheckpointManager : MonoBehaviour
     {
         laps.Add(1);
         racers.Add(myRacer);
+        fc.Add(true);
         return laps.Count - 1;
+    }
+
+    public bool FirstCheck(Racer num)
+    {
+        int i = racers.IndexOf(num);
+        bool o = fc[i];
+        fc[i] = false;
+        return o;
     }
 
     public void ResetLap(Racer r)
@@ -47,7 +56,7 @@ public class CheckpointManager : MonoBehaviour
         }
         laps[r.number]++;
         int u = racers.IndexOf(r);
-        IGP_Manager.instance.CurC(u, laps[u]);
+        IGP_Manager.instance.CurC(u+1, laps[u]);
     }
 
     public bool CheckLastCheckpoint(Racer mR, Checkpoint cP)

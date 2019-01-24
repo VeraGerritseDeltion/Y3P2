@@ -49,7 +49,7 @@ public class Racer : MonoBehaviour
         //fini.SetActive(finished);
         IGP_Manager.instance.UpdatePos(playerNum, racePosition);
 
-        if (Input.GetKeyDown(KeyCode.I))
+        if (Input.GetButtonDown("C" + playerNum + " X") || Input.GetButtonDown("C" + playerNum + " Y"))
         {
             if(myItem!= null)
             {
@@ -61,21 +61,24 @@ public class Racer : MonoBehaviour
                 ni.Use(this);
             }
         }
-        if (Input.GetKeyUp(KeyCode.I))
+        if (Input.GetButtonUp("C" + playerNum + " X") || Input.GetButtonUp("C" + playerNum + " Y"))
         {
-            Item ni = myItem.GetComponent<Item>();
-            if(ni == null)
+            if(myItem != null)
             {
-                ni = myItem.GetComponentInChildren<Item>();
+                Item ni = myItem.GetComponent<Item>();
+                if (ni == null)
+                {
+                    ni = myItem.GetComponentInChildren<Item>();
+                }
+                ni.UseItem();
+                IGP_Manager.instance.DisImg(playerNum);
+                myItem = null;
             }
-            ni.UseItem();
-            IGP_Manager.instance.DisImg(playerNum);
-            myItem = null;
         }
     }
 
     public void Damage()
     {
-        print("damaged");
+        //GetComponentInParent<KartPhysics>().Damaged();
     }
 }

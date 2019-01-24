@@ -13,7 +13,12 @@ public class Item : MonoBehaviour
     public void Use(Racer myR)
     {
         myRacer = myR;
-        GameObject item = Instantiate(myObject, myRacer.itemLocation.position, Quaternion.identity);
+        GameObject item = Instantiate(myObject, myRacer.itemLocation.position, Quaternion.Euler(myRacer.itemLocation.rotation.x, myRacer.itemLocation.rotation.y - 90, myRacer.itemLocation.rotation.z));
+        if(item.GetComponentInChildren<Collider>() != null)
+        {
+            item.GetComponentInChildren<Collider>().enabled = false;
+        }
+
         item.transform.parent = myRacer.itemLocation;
         if(item.GetComponent<Rigidbody>() != null)
         {

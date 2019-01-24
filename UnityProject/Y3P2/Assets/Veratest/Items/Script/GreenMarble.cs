@@ -25,7 +25,7 @@ public class GreenMarble : Item
         myR.AddForce(myRacer.gameObject.transform.forward * speed);
         myRacer.anim.speed = 1;
         myRacer.myItem = null;
-
+        GetComponentInChildren<Collider>().enabled = true;
     }
 
         private void OnCollisionEnter(Collision collision)

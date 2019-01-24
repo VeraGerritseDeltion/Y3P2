@@ -26,6 +26,7 @@ public class Bomb_Bear : Item
         myR.AddForce(myRacer.gameObject.transform.forward * speed + myRacer.gameObject.transform.up * angle);
         StartCoroutine(Explode());
         myRacer.myItem = null;
+        GetComponentInChildren<Collider>().enabled = true;
     }
 
     IEnumerator Explode()

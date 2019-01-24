@@ -6,22 +6,27 @@ public class ItemBox : MonoBehaviour
 {
 
     bool cooldown;
-    private void OnTriggerEnter(Collider other)
+    public MeshRenderer box;
+
+    private void OnTriggerStay(Collider other)
     {
         if(other.gameObject.tag == "Car" && !cooldown)
         {
             Racer r = other.GetComponentInChildren<Racer>();
-            r.NewItem(Item_Manager.instance.GetItem());
-            GetComponent<MeshRenderer>().enabled = false;
-            cooldown = true;
-            StartCoroutine(Cooldown());
+            if(r.myItem == null)
+            {
+                r.NewItem(Item_Manager.instance.GetItem());
+                box.enabled = false;
+                cooldown = true;
+                StartCoroutine(Cooldown());
+            }        
         }
     }
 
     IEnumerator Cooldown()
     {
         yield return new WaitForSeconds(10);
-        GetComponent<MeshRenderer>().enabled = true;
+        box.enabled = true;
         cooldown = false;
     }
 }
