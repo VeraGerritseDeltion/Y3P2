@@ -5,25 +5,25 @@ using UnityEngine.UI;
 
 public class Racer : MonoBehaviour
 {
+    public int playerNum;
     public int number;
 
     private float score;
 
     public int racePosition;
-
-    public Text rP;
-
     public GameObject fini;
 
     public bool finished;
 
     public Transform itemLocation;
-    public Transform useLocation;
+    public Transform carLocation;
 
     public GameObject myItem;
 
     public GameObject testItem;
     public Animator anim;
+
+    public Camera UiCam;
     private void Start()
     {
         number = CheckpointManager.instance.GetNumber(this);
@@ -41,8 +41,8 @@ public class Racer : MonoBehaviour
 
     private void Update()
     {
-        fini.SetActive(finished);
-        rP.text = racePosition.ToString();
+        //fini.SetActive(finished);
+        IGP_Manager.instance.UpdatePos(playerNum, racePosition);
 
         if (Input.GetKeyDown(KeyCode.I))
         {
@@ -60,7 +60,6 @@ public class Racer : MonoBehaviour
             {
                 ni = myItem.GetComponentInChildren<Item>();
             }
-            print(ni);
             ni.UseItem();
         }
     }

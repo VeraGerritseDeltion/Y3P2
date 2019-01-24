@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3788546120709521043}
-  - component: {fileID: 8431731300973098378}
   m_Layer: 0
   m_Name: Blue_Car
   m_TagString: Untagged
@@ -32,35 +31,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8431731300973098378
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5676807778189164548}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07a2fc8cb5586454e90021776f8dd97c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 150
-  weight: 400
-  acceleration: 25
-  handling: 0.75
-  driftMultiplier: 0.75
---- !u!4 &6524824837826289929 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 400002, guid: 2aca2273c0000df468ffe1d039f29c34,
-    type: 3}
-  m_PrefabInstance: {fileID: 6524824837826689931}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &6524824837826788655 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 100004, guid: 2aca2273c0000df468ffe1d039f29c34,
-    type: 3}
-  m_PrefabInstance: {fileID: 6524824837826689931}
-  m_PrefabAsset: {fileID: 0}
 --- !u!95 &6542883787879413967
 Animator:
   serializedVersion: 3
@@ -83,6 +53,7 @@ Animator:
 --- !u!1001 &6524824837826689931
 PrefabInstance:
   m_ObjectHideFlags: 0
+  serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 3788546120709521043}
     m_Modifications:
@@ -104,3 +75,15 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 6db175008cd05b14c827f72417c12bf9, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2aca2273c0000df468ffe1d039f29c34, type: 3}
+--- !u!4 &6524824837826289929 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400002, guid: 2aca2273c0000df468ffe1d039f29c34,
+    type: 3}
+  m_PrefabInstance: {fileID: 6524824837826689931}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6524824837826788655 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100004, guid: 2aca2273c0000df468ffe1d039f29c34,
+    type: 3}
+  m_PrefabInstance: {fileID: 6524824837826689931}
+  m_PrefabAsset: {fileID: 0}
