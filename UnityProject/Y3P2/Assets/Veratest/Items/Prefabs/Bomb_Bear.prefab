@@ -113,7 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7863cf301e13a0a4c84b262cccb05719, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mySprite: {fileID: 0}
+  mySprite: {fileID: 21300000, guid: 0ed226fcf17f6db40bb8c5f485d872bb, type: 3}
   myObject: {fileID: 994927018}
   chance: 0
   myRacer: {fileID: 0}

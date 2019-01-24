@@ -24,4 +24,27 @@ public class IGP_Manager : MonoBehaviour
         }
 
     }
+
+    public void MaxC(int max)
+    {
+        for (int i = 0; i < allIGP.Count; i++)
+        {
+            allIGP[i].MaxLaps(max);
+        }
+    }
+
+    public void CurC(int player, int lap)
+    {
+        allIGP[player - 1].Position(lap);
+    }
+
+    public void ItemImage(int player,Sprite image)
+    {
+        allIGP[player - 1].Img(image);
+    }
+
+    public void DisImg(int player)
+    {
+        allIGP[player - 1].DisImg();
+    }
 }

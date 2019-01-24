@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class IGP : MonoBehaviour
 {
     public Image positionImage;
-    public Text mL;
-    public Text l;
+    public Image itemImage;
+    public TMP_Text mL;
+    public TMP_Text l;
 
     public void Position(int pos)
     {
@@ -24,4 +26,14 @@ public class IGP : MonoBehaviour
         l.text = lap.ToString();
     }
 
+    public void Img(Sprite spr)
+    {
+        itemImage.sprite = spr;
+        itemImage.enabled = true;
+    }
+
+    public void DisImg()
+    {
+        itemImage.enabled = false;
+    }
 }

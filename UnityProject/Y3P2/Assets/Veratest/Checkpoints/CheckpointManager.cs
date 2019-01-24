@@ -22,6 +22,11 @@ public class CheckpointManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        IGP_Manager.instance.MaxC(amoutOfLaps);
+    }
+
     public int GetNumber(Racer myRacer)
     {
         laps.Add(1);
@@ -41,6 +46,8 @@ public class CheckpointManager : MonoBehaviour
             r.finished = true;
         }
         laps[r.number]++;
+        int u = racers.IndexOf(r);
+        IGP_Manager.instance.CurC(u, laps[u]);
     }
 
     public bool CheckLastCheckpoint(Racer mR, Checkpoint cP)

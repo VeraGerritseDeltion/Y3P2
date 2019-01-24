@@ -39,6 +39,11 @@ public class Racer : MonoBehaviour
         score = ns;
     }
 
+    public void NewItem(GameObject item)
+    {
+        myItem = item;
+        IGP_Manager.instance.ItemImage(playerNum, item.GetComponentInChildren<Item>().mySprite);
+    }
     private void Update()
     {
         //fini.SetActive(finished);
@@ -46,12 +51,15 @@ public class Racer : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.I))
         {
-            Item ni = testItem.GetComponent<Item>();
-            if(ni == null)
+            if(myItem!= null)
             {
-               ni = testItem.GetComponentInChildren<Item>();
+                Item ni = myItem.GetComponent<Item>();
+                if (ni == null)
+                {
+                    ni = testItem.GetComponentInChildren<Item>();
+                }
+                ni.Use(this);
             }
-            ni.Use(this);
         }
         if (Input.GetKeyUp(KeyCode.I))
         {
@@ -61,6 +69,7 @@ public class Racer : MonoBehaviour
                 ni = myItem.GetComponentInChildren<Item>();
             }
             ni.UseItem();
+            IGP_Manager.instance.DisImg(playerNum);
         }
     }
 
