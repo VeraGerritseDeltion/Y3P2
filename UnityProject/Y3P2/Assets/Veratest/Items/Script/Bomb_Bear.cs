@@ -37,7 +37,7 @@ public class Bomb_Bear : Item
         {
             if (playersHit[i].gameObject.tag == "Car")
             {
-                playersHit[i].GetComponent<Racer>().Damage();
+                playersHit[i].GetComponentInChildren<Racer>().Damage();
             }
         }
         yield return new WaitForSeconds(0.5f);

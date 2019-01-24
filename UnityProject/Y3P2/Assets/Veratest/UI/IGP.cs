@@ -29,11 +29,12 @@ public class IGP : MonoBehaviour
     public void Img(Sprite spr)
     {
         itemImage.sprite = spr;
-        itemImage.enabled = true;
+        itemImage.gameObject.SetActive(true);
+        print("tezt");
     }
 
     public void DisImg()
     {
-        itemImage.enabled = false;
+        itemImage.gameObject.SetActive(false);
     }
 }

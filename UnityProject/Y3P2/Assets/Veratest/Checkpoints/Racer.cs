@@ -56,7 +56,7 @@ public class Racer : MonoBehaviour
                 Item ni = myItem.GetComponent<Item>();
                 if (ni == null)
                 {
-                    ni = testItem.GetComponentInChildren<Item>();
+                    ni = myItem.GetComponentInChildren<Item>();
                 }
                 ni.Use(this);
             }
@@ -70,6 +70,7 @@ public class Racer : MonoBehaviour
             }
             ni.UseItem();
             IGP_Manager.instance.DisImg(playerNum);
+            myItem = null;
         }
     }
 

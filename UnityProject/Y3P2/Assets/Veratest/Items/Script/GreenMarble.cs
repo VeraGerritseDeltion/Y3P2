@@ -25,13 +25,14 @@ public class GreenMarble : Item
         myR.AddForce(myRacer.gameObject.transform.forward * speed);
         myRacer.anim.speed = 1;
         myRacer.myItem = null;
+
     }
 
         private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.tag == "Car")
         {
-            collision.gameObject.GetComponent<Racer>().Damage();
+            collision.gameObject.GetComponentInChildren<Racer>().Damage();
             Destroy(gameObject);
         }
 
