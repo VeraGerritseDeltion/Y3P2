@@ -143,10 +143,10 @@ public class KartPhysics : MonoBehaviour
                 wheels[1].localEulerAngles = new Vector3(0, Mathf.SmoothDampAngle(wheels[1].localEulerAngles.y, rotation, ref refVelocity, wheelSmooth));
             }
             
-            //Stabilizer();
+            Stabilizer();
         }
 
-        character.localRotation = Quaternion.Slerp(character.localRotation, Quaternion.Euler(new Vector3(x, 0, z)), characterRotSpeed);
+        //character.localRotation = Quaternion.Slerp(character.localRotation, Quaternion.Euler(new Vector3(x, 0, z)), characterRotSpeed);
     }
 
     private PlayerInput GetPlayerInput()
@@ -186,7 +186,7 @@ public class KartPhysics : MonoBehaviour
             
             wheels[i].localPosition = new Vector3(wheels[i].localPosition.x, Mathf.Lerp(wheelHeight.x, wheelHeight.y, compressionRatio), wheels[i].localPosition.z);
 
-            //Debug.DrawLine(rh.point, rh.point + Vector3.ProjectOnPlane(-rb.GetPointVelocity(corners[i].position), rh.normal) * (playerInput.drifting ? gripDrift : grip), Color.red);
+            Debug.DrawLine(rh.point, rh.point + Vector3.ProjectOnPlane(-rb.GetPointVelocity(corners[i].position), rh.normal) * (playerInput.drifting ? gripDrift : grip), Color.red);
             rb.AddForceAtPosition(Vector3.ProjectOnPlane(-rb.GetPointVelocity(corners[i].position), rh.normal) * (playerInput.drifting ? gripDrift : grip), rh.point, ForceMode.Acceleration);
         }
 
@@ -200,7 +200,7 @@ public class KartPhysics : MonoBehaviour
     {
         if (Physics.Raycast(origin, down, out rh, raycastLenght))
         {
-            //Debug.DrawLine(origin, rh.point);
+            Debug.DrawLine(origin, rh.point);
             touchingGround++;
             groundNormal += rh.normal;
             if (rh.transform.CompareTag("Glue"))
