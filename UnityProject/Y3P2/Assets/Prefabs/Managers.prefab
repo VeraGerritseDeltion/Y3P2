@@ -258,7 +258,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ea21846dd9119c498241476292d2ed2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  places: []
+  places:
+  - {fileID: 21300000, guid: d700e70c06a129b40a27f18105d109f3, type: 3}
+  - {fileID: 21300000, guid: 9c7d2a838f7ee2f4c9b6f94e55ed16eb, type: 3}
+  - {fileID: 21300000, guid: 53be87c5b1fc43945a2318b693e7b45a, type: 3}
+  - {fileID: 21300000, guid: 9837c2ac9b85d7f448e2afea281f7618, type: 3}
   allIGP: []
 --- !u!1 &8879607808825169683
 GameObject:
@@ -303,4 +307,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c85f66d7527af245a389615a1a934e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allItems: []
+  allItems:
+  - {fileID: 2050883845204672568, guid: 364b6ea2d298875448ecd2d33539f9c5, type: 3}
+  - {fileID: 6493404402981750652, guid: 753be13fbc4875e42ac915e976b69627, type: 3}
+  - {fileID: 994927018, guid: ae27687930c90264f84cb20c70f07053, type: 3}

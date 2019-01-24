@@ -10,10 +10,6 @@ public class UIManager : MonoBehaviour
     private bool ready;
     public enum MenuType {mainMenu, carSelect, inGame}
     public MenuType menuType;
-    [Header("MainMenu")]
-    public List<Button> allButtons = new List<Button>();
-    [SerializeField] private int currentButton;
-    private bool delay;
 
     [Header("CarsSelect")]
     public List<TMP_Text> allText = new List<TMP_Text>();
@@ -26,7 +22,6 @@ public class UIManager : MonoBehaviour
     [Header("Menus")]
     public GameObject mainMenu;
     public GameObject carSelect;
-    public GameObject inGame;
 
     private void Awake()
     {
@@ -36,24 +31,20 @@ public class UIManager : MonoBehaviour
         }
 
         OnMenuChanged(MenuType.mainMenu);
-        for (int i = 0; i < allButtons.Count; i++)
-        {
-            allButtons[i].animator.SetTrigger("Normal");
-        }
     }
 
     private void Update()
     {
         if (menuType == MenuType.mainMenu)
         {
-            MainMenu();
+
         }
+
         else if (menuType == MenuType.carSelect)
         {
             CarSelect();
         }
     }
-
     private void CarSelect()
     {
         if (Input.GetButtonDown("Back"))
@@ -85,45 +76,7 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    private void MainMenu()
-    {
-        //allButtons[currentButton].animator.SetTrigger("Highlighted");
-        if (Input.GetAxis("C1 Vert") > 0 && !delay)
-        {
-            print(currentButton);
-            allButtons[currentButton].animator.SetBool("Highlight", false);
-            currentButton++;
-            if (currentButton == allButtons.Count)
-            {
-                currentButton = 0;
-            }
-            delay = true;
-            StartCoroutine(StartDelay());
-        }
-        else if (Input.GetAxis("C1 Vert") < 0 && !delay)
-        {
-            allButtons[currentButton].animator.SetBool("Highlight", false);
-            currentButton--;
-            if (currentButton < 0)
-            {
-                currentButton = allButtons.Count - 1;
-            }
 
-            delay = true;
-            StartCoroutine(StartDelay());
-        }
-        allButtons[currentButton].animator.SetBool("Highlight", true);
-        if (Input.GetButtonDown("C1 A"))
-        {
-            allButtons[currentButton].onClick.Invoke();
-        }
-    }
-    IEnumerator StartDelay()
-    {
-
-        yield return new WaitForSeconds(0.3f);
-        delay = false;
-    }
 
     public void Exit()
     {
@@ -142,17 +95,14 @@ public class UIManager : MonoBehaviour
         {
             case MenuType.carSelect:
                 mainMenu.SetActive (false);
-                inGame.SetActive(false);
                 carSelect.SetActive(true);
                 break;
             case MenuType.inGame:
                 mainMenu.SetActive(false);
-                inGame.SetActive(true);
                 carSelect.SetActive(false);
                 break;
             case MenuType.mainMenu:
                 mainMenu.SetActive(true);
-                inGame.SetActive(false);
                 carSelect.SetActive(false);
                 break;
         }
