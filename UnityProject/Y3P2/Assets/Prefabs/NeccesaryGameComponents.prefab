@@ -208,7 +208,10 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 32c6124464f8ef440afe38a88291158f, type: 3}
   - {fileID: 21300000, guid: 1b9b4a5de97f4da4bba55df3bc66f0e1, type: 3}
   - {fileID: 21300000, guid: b7b48bf19f9c29641bcd9468551f0580, type: 3}
-  genderObj: []
+  genderMat:
+  - {fileID: 2100000, guid: 7c4935e794492484a919895f09504e99, type: 2}
+  - {fileID: 2100000, guid: 02bc648b032a1544aa13135da790dae2, type: 2}
+  - {fileID: 2100000, guid: 2abb62e691c2b164082fdddf645ed287, type: 2}
   hatSpr:
   - {fileID: 21300000, guid: acba75b3b667cd043aa27ad8efb49bc9, type: 3}
   - {fileID: 21300000, guid: 9c708efd439f15e44bb3cb2f96d24413, type: 3}
@@ -217,23 +220,40 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 58bc2c1db79f2e342a40ba96507483a6, type: 3}
   - {fileID: 21300000, guid: 901ea203e2d0fe342bb8a08cd5e50011, type: 3}
   - {fileID: 21300000, guid: 4cdbe6b7127437e42994eff6fbf4d1b0, type: 3}
-  hatObj: []
+  hatObj:
+  - {fileID: 556586840566955632, guid: e53e115b0adb4dd40b2863ee84b14608, type: 3}
+  - {fileID: 5025440348531563776, guid: 829158300d790a54f9e623135497f75e, type: 3}
+  - {fileID: 3803111870745471285, guid: 1cb9750aaab6a234b8e58787b70ab62d, type: 3}
+  - {fileID: 6318463489820616190, guid: a2b4d7f55e68aec4ca35f3b973dfd48b, type: 3}
+  - {fileID: 4506166744428342286, guid: 848b13197633a8c4986f44ff248c3f1b, type: 3}
+  - {fileID: 7324241950911991206, guid: b45e80416c7951f42b61ea0e1812da13, type: 3}
+  - {fileID: 1521135665105242863, guid: 1acf9018db8e5c840a7930119995955f, type: 3}
   beardSpr:
   - {fileID: 21300000, guid: 3d535e65323a56e4c83a83fd3cb2bc58, type: 3}
   - {fileID: 21300000, guid: 5d55c82bec4ecb74192ceabaeb58393f, type: 3}
   - {fileID: 21300000, guid: 7f217fec850b11543bb4bbf3fbc7bd7c, type: 3}
   - {fileID: 21300000, guid: ae58783db257c5c4a9cc296b4b41913f, type: 3}
   - {fileID: 21300000, guid: 040a66954bd45304eae753c8439bfb66, type: 3}
-  beardObj: []
+  beardObj:
+  - {fileID: 2724994048244933041, guid: 61e80c086f008b84089a4a8af16932fe, type: 3}
+  - {fileID: 3165941531455930832, guid: 0f75f6b9ece2d3d4db7777d617d6b8c1, type: 3}
+  - {fileID: 6527444892705590511, guid: 9483fcb858c239341bbbe7ef045d458b, type: 3}
+  - {fileID: 1605529191488713231, guid: e7dd55a3e0c1461488541e248e490d2c, type: 3}
+  - {fileID: 3333273250234346695, guid: 49238b94284c24d4792b62a1f1e8f4cb, type: 3}
   carSpr:
   - {fileID: 21300000, guid: 7873fd0684ec1be4ab24fc7044dd90ed, type: 3}
   - {fileID: 21300000, guid: 3efc488987d445e42ac7b7d7ce590f1f, type: 3}
-  carObj: []
+  carObj:
+  - {fileID: 5676807778189164548, guid: fa75fde0b343546489d555c756de906d, type: 3}
+  - {fileID: 3306431540796427302, guid: 0f3fca02e081e36488b0c3af5313e842, type: 3}
   wheelSpr:
   - {fileID: 21300000, guid: ae529fd4f95aa83418ea40701b80646e, type: 3}
   - {fileID: 21300000, guid: 8a77b1718c481dc4fa5bd4c53819e2d7, type: 3}
   - {fileID: 21300000, guid: 13d8adae461fadb40b7abb5cb6dddc4a, type: 3}
-  wheelObj: []
+  wheelObj:
+  - {fileID: 6280794500624081320, guid: a4b469b1a77342048890bb3b3c9dacab, type: 3}
+  - {fileID: 4098963471631868611, guid: d3953209e41d4264f9327e5b67973277, type: 3}
+  - {fileID: 4231829044253307979, guid: fa1ca94d1c25e0449bc954adeb0ca081, type: 3}
   headers: []
   CarSelection:
   - {fileID: 6560205301987658847}
@@ -531,7 +551,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.00012207031, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -1544.3, y: -867}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2727588127173781680

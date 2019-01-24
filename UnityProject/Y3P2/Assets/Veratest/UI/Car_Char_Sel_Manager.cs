@@ -12,7 +12,7 @@ public class Car_Char_Sel_Manager : MonoBehaviour
     [Header("customazation")]
     [Header("Gender")]
     public List<Sprite> genderSpr = new List<Sprite>();
-    public List<GameObject> genderObj = new List<GameObject>();
+    public List<Material> genderMat = new List<Material>();
 
     [Header("Hat")]
     public List<Sprite> hatSpr = new List<Sprite>();
@@ -30,8 +30,7 @@ public class Car_Char_Sel_Manager : MonoBehaviour
     public List<Sprite> wheelSpr = new List<Sprite>();
     public List<GameObject> wheelObj = new List<GameObject>();
 
-    [Header("header")]
-    public List<TMP_Text> headers = new List<TMP_Text>();
+   
 
     [Header("Panels")]
     public List<GameObject> CarSelection = new List<GameObject>();
@@ -64,7 +63,12 @@ public class Car_Char_Sel_Manager : MonoBehaviour
             ready.SetActive(true);
             if (Input.GetButtonDown("Start"))
             {
-
+                GameManager.instance.StartGame();
+                for (int i = 0; i < PlayerManager.instance.allPlayers.Count; i++)
+                {
+                    PlayerManager.instance.allPlayers[i].SpawnItems(carObj[carChar[i].currentCar], wheelObj[carChar[i].currentWheels], hatObj[carChar[i].currentHat], beardObj[carChar[i].currentBeard], genderMat[carChar[i].currentGender]);
+                }
+                
             }
         }
         else

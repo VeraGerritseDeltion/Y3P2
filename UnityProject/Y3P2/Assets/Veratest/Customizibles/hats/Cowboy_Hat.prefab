@@ -1,0 +1,108 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &556586840566955632
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4455399075724048067}
+  m_Layer: 0
+  m_Name: Cowboy_Hat
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4455399075724048067
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 556586840566955632}
+  m_LocalRotation: {x: 5.0007903e-18, y: -3.5575384e-19, z: -2.7105054e-20, w: 1}
+  m_LocalPosition: {x: -1.3291086e-10, y: 0.000000029802322, z: -0.0000000018626451}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4110166171681919302}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &3371033484404023234
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4455399075724048067}
+    m_Modifications:
+    - target: {fileID: 1712053183602447012, guid: 5b5dcbb1938a8b74ca6e5527b145a8e0,
+        type: 3}
+      propertyPath: m_Name
+      value: 3D_Cowboy_Hat
+      objectReference: {fileID: 0}
+    - target: {fileID: 1712053183602544260, guid: 5b5dcbb1938a8b74ca6e5527b145a8e0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.002
+      objectReference: {fileID: 0}
+    - target: {fileID: 1712053183602544260, guid: 5b5dcbb1938a8b74ca6e5527b145a8e0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 1712053183602544260, guid: 5b5dcbb1938a8b74ca6e5527b145a8e0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 1712053183602544260, guid: 5b5dcbb1938a8b74ca6e5527b145a8e0,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.104368955
+      objectReference: {fileID: 0}
+    - target: {fileID: 1712053183602544260, guid: 5b5dcbb1938a8b74ca6e5527b145a8e0,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 3.3200168e-16
+      objectReference: {fileID: 0}
+    - target: {fileID: 1712053183602544260, guid: 5b5dcbb1938a8b74ca6e5527b145a8e0,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -3.6197815e-16
+      objectReference: {fileID: 0}
+    - target: {fileID: 1712053183602544260, guid: 5b5dcbb1938a8b74ca6e5527b145a8e0,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.99453866
+      objectReference: {fileID: 0}
+    - target: {fileID: 1712053183602544260, guid: 5b5dcbb1938a8b74ca6e5527b145a8e0,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1712053183602544260, guid: 5b5dcbb1938a8b74ca6e5527b145a8e0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -11.982
+      objectReference: {fileID: 0}
+    - target: {fileID: 1712053183602544260, guid: 5b5dcbb1938a8b74ca6e5527b145a8e0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1712053183602544260, guid: 5b5dcbb1938a8b74ca6e5527b145a8e0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5b5dcbb1938a8b74ca6e5527b145a8e0, type: 3}
+--- !u!4 &4110166171681919302 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1712053183602544260, guid: 5b5dcbb1938a8b74ca6e5527b145a8e0,
+    type: 3}
+  m_PrefabInstance: {fileID: 3371033484404023234}
+  m_PrefabAsset: {fileID: 0}

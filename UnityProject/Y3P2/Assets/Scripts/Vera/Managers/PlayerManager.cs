@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour
 {
 
-    public List<Player> allPlayers = new List<Player>();
+    public List<CarPartsSpawn> allPlayers = new List<CarPartsSpawn>();
     public static PlayerManager instance;
 
     private void Awake()
@@ -16,7 +16,7 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    public void AddPlayer(Player newPlayer)
+    public void AddPlayer(CarPartsSpawn newPlayer)
     {
         allPlayers.Add(newPlayer);
     }

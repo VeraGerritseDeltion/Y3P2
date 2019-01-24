@@ -22,18 +22,10 @@ public class LevelManager : MonoBehaviour
     {
         for (int i = 0; i < currentLevel.startLocations.Count; i++)
         {
-            if (aP.Count > i)
-            {
                 GameObject nP = Instantiate(aP[i], currentLevel.startLocations[i]);
-                Player p = nP.GetComponent<Player>();
+                CarPartsSpawn p = nP.GetComponentInChildren<CarPartsSpawn>();
                 p.myCam.enabled = true;
                 PlayerManager.instance.AddPlayer(p);
-                
-            }
-            else
-            {
-                Instantiate(AI, currentLevel.startLocations[i]);
-            }
         }
         if (aP.Count == 1)
         {
@@ -58,6 +50,7 @@ public class LevelManager : MonoBehaviour
     {
         print("1 players");
         PlayerManager.instance.allPlayers[0].myCam.rect = new Rect(0, 0, 1, 1);
+        PlayerManager.instance.allPlayers[0].camUI.rect = new Rect(0, 0, 1, 1);
     }
 
     void TwoPlayers()
@@ -65,6 +58,9 @@ public class LevelManager : MonoBehaviour
         print("2 players");
         PlayerManager.instance.allPlayers[0].myCam.rect = new Rect(0, 0, 0.5f, 1);
         PlayerManager.instance.allPlayers[1].myCam.rect = new Rect(0.5f, 0, 0.5f, 1);
+
+        PlayerManager.instance.allPlayers[0].camUI.rect = new Rect(0, 0, 0.5f, 1);
+        PlayerManager.instance.allPlayers[1].camUI.rect = new Rect(0.5f, 0, 0.5f, 1);
     }
 
     void ThreePlayers()
@@ -73,6 +69,10 @@ public class LevelManager : MonoBehaviour
         PlayerManager.instance.allPlayers[0].myCam.rect = new Rect(0, 0.5f, 0.5f, 0.5f);
         PlayerManager.instance.allPlayers[1].myCam.rect = new Rect(0.5f, 0.5f, 0.5f, 0.5f);
         PlayerManager.instance.allPlayers[2].myCam.rect = new Rect(0, 0, 0.5f, 0.5f);
+
+        PlayerManager.instance.allPlayers[0].camUI.rect = new Rect(0, 0.5f, 0.5f, 0.5f);
+        PlayerManager.instance.allPlayers[1].camUI.rect = new Rect(0.5f, 0.5f, 0.5f, 0.5f);
+        PlayerManager.instance.allPlayers[2].camUI.rect = new Rect(0, 0, 0.5f, 0.5f);
     }
 
     void FourPlayers()
@@ -82,5 +82,10 @@ public class LevelManager : MonoBehaviour
         PlayerManager.instance.allPlayers[1].myCam.rect = new Rect(0.5f, 0.5f, 0.5f, 0.5f);
         PlayerManager.instance.allPlayers[2].myCam.rect = new Rect(0, 0, 0.5f, 0.5f);
         PlayerManager.instance.allPlayers[3].myCam.rect = new Rect(0.5f, 0, 0.5f, 0.5f);
+
+        PlayerManager.instance.allPlayers[0].camUI.rect = new Rect(0, 0.5f, 0.5f, 0.5f);
+        PlayerManager.instance.allPlayers[1].camUI.rect = new Rect(0.5f, 0.5f, 0.5f, 0.5f);
+        PlayerManager.instance.allPlayers[2].camUI.rect = new Rect(0, 0, 0.5f, 0.5f);
+        PlayerManager.instance.allPlayers[3].camUI.rect = new Rect(0.5f, 0, 0.5f, 0.5f);
     }
 }
