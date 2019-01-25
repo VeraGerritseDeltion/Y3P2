@@ -11864,6 +11864,16 @@ PrefabInstance:
       propertyPath: playerNum
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3104266444024233130, guid: 77f8250c95136fe4b8ade21a8d33f3e0,
+        type: 3}
+      propertyPath: grip
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3104266444024233130, guid: 77f8250c95136fe4b8ade21a8d33f3e0,
+        type: 3}
+      propertyPath: hitEffect
+      value: 
+      objectReference: {fileID: 400004, guid: fb7b0526ade434043b350a180d741cf3, type: 3}
     - target: {fileID: 647844788, guid: 77f8250c95136fe4b8ade21a8d33f3e0, type: 3}
       propertyPath: m_LocalPosition.z
       value: -11.3

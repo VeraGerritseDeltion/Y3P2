@@ -9,6 +9,8 @@ public class KartPhysics : MonoBehaviour
     public int playerNum = 1;
     public bool stop;
 
+    public Transform hitEffect;
+
     [Header("Suspension"),SerializeField] private float raycastLenght = 0.6f;
     [SerializeField] private Transform[] corners = new Transform[4];
     [SerializeField] private float suspensionStrenght = 10f;
@@ -218,6 +220,8 @@ public class KartPhysics : MonoBehaviour
         damaged = true;
         rb.isKinematic = true;
         bc.enabled = false;
+
+        Instantiate(hitEffect, transform.position, Quaternion.identity);
 
         float startRotation = transform.localEulerAngles.y;
         float endRotation = startRotation + (360f * spins);

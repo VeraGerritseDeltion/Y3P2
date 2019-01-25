@@ -20,6 +20,7 @@ public class IGP_Manager : MonoBehaviour
     {
         if (pos != 0 && allIGP.Count != 0)
         {
+            print(player);
             allIGP[player - 1].Position(pos);
         }
 

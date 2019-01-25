@@ -47,7 +47,10 @@ public class Racer : MonoBehaviour
     private void Update()
     {
         fini.SetActive(finished);
-        IGP_Manager.instance.UpdatePos(playerNum, racePosition);
+        if(playerNum != 0)
+        {
+            IGP_Manager.instance.UpdatePos(playerNum, racePosition);
+        }
         
         if (Input.GetButtonDown("C" + playerNum + " X") || Input.GetButtonDown("C" + playerNum + " Y"))
         {

@@ -2311,6 +2311,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: 0
   panel: 0
+  currentGender: 0
+  currentHat: 0
+  currentBeard: 0
+  currentCar: 0
+  currentWheels: 0
   gender:
   - {fileID: 3883849197962741259}
   - {fileID: 8883799426099251813}
@@ -3584,11 +3589,11 @@ RectTransform:
   m_Father: {fileID: 987890622024114522}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000015259, y: 216.75}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 435.8, y: 104.4}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &1099945216612496816
 CanvasRenderer:
   m_ObjectHideFlags: 0

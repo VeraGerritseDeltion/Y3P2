@@ -249,6 +249,7 @@ public class Car_Char_Sel_Manager : MonoBehaviour
         }
         if (!exist)
         {
+            print(index + "aaaaah");
             allControlers.Add(index);
             AddPlayer(allControlers.Count - 1, index);
         }
