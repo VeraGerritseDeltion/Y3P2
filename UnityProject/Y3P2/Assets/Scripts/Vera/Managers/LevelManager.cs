@@ -18,32 +18,34 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    public void PlacePlayers(List<GameObject> aP)
+    public void PlacePlayers(int controlers)
     {
-        for (int i = 0; i < currentLevel.startLocations.Count; i++)
+        for (int i = 0; i < controlers; i++)
         {
-                GameObject nP = Instantiate(aP[i], currentLevel.startLocations[i]);
-                CarPartsSpawn p = nP.GetComponentInChildren<CarPartsSpawn>();
-                p.myCam.enabled = true;
-                PlayerManager.instance.AddPlayer(p);
+            GameObject nP = Instantiate(player, currentLevel.startLocations[i].position, Quaternion.Euler( currentLevel.startLocations[i].rotation.x, currentLevel.startLocations[i].rotation.y+ 90, currentLevel.startLocations[i].rotation.x));
+            KartPhysics r = nP.GetComponentInChildren<KartPhysics>();
+            Racer t = nP.GetComponentInChildren<Racer>();
+            t.playerNum = i + 1;
+            r.playerNum = i +1;            
+            CarPartsSpawn p = nP.GetComponentInChildren<CarPartsSpawn>();   
+            PlayerManager.instance.AddPlayer(p);
         }
-        if (aP.Count == 1)
+        if (controlers == 1)
         {
             OnePlayer();
         }
-        if (aP.Count == 2)
+        if (controlers == 2)
         {
             TwoPlayers();
         }
-        if (aP.Count == 3)
+        if (controlers == 3)
         {
             ThreePlayers();
         }
-        if (aP.Count == 4)
+        if (controlers == 4)
         {
             FourPlayers();
         }
-        CarSelectionManager.instance.DestroyGarageCars();
     }
 
     void OnePlayer()

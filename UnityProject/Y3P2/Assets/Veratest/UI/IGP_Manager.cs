@@ -18,7 +18,7 @@ public class IGP_Manager : MonoBehaviour
 
     public void UpdatePos(int player, int pos)
     {
-        if (pos != 0)
+        if (pos != 0 && allIGP.Count != 0)
         {
             allIGP[player - 1].Position(pos);
         }
@@ -27,16 +27,18 @@ public class IGP_Manager : MonoBehaviour
 
     public void MaxC(int max)
     {
-        for (int i = 0; i < allIGP.Count; i++)
+        if(allIGP.Count != 0)
         {
-            allIGP[i].MaxLaps(max);
+            for (int i = 0; i < allIGP.Count; i++)
+            {
+                allIGP[i].MaxLaps(max);
+            }
         }
     }
 
     public void CurC(int player, int lap)
     {
         allIGP[player - 1].Lap(lap);
-        print("test");
     }
 
     public void ItemImage(int player,Sprite image)

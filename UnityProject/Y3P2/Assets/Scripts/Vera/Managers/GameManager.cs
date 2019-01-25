@@ -17,10 +17,11 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    public void StartGame()
+    public void StartGame(int con)
     {
             UIManager.instance.OnMenuChanged(UIManager.MenuType.inGame);
-            LevelManager.instance.PlacePlayers(CarSelectionManager.instance.allCars);
+            LevelManager.instance.PlacePlayers(con);
+            CheckpointManager.instance.Circuit();
             racing = true;
             played = true;
     }

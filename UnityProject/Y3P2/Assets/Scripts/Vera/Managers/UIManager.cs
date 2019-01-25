@@ -53,7 +53,7 @@ public class UIManager : MonoBehaviour
         }
         if (Input.GetButtonDown("Start") && ready)
         {
-            GameManager.instance.StartGame();
+            //GameManager.instance.StartGame();
         }
     }
 

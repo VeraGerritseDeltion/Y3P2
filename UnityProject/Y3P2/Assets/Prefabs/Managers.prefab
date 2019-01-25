@@ -111,7 +111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentLevel: {fileID: 0}
-  player: {fileID: 2553183745303345321, guid: 624262a845dd9fb418a7f154be99c6dc, type: 3}
+  player: {fileID: 3104266444024233131, guid: 77f8250c95136fe4b8ade21a8d33f3e0, type: 3}
   AI: {fileID: 4036687823764159046, guid: e13aa3578c93a8e45b26b34408591fda, type: 3}
 --- !u!1 &7913027198006000851
 GameObject:

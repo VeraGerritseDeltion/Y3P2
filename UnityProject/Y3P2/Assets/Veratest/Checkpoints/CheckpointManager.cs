@@ -24,6 +24,11 @@ public class CheckpointManager : MonoBehaviour
 
     private void Start()
     {
+
+    }
+
+    public void Circuit()
+    {
         IGP_Manager.instance.MaxC(amoutOfLaps);
     }
 
@@ -84,18 +89,18 @@ public class CheckpointManager : MonoBehaviour
 
     private void Update()
     {
-        for (int i = 0; i < racers.Count; i++)
-        {
-            if (!racers[i].finished)
+            for (int i = 0; i < racers.Count; i++)
             {
-                racers[i].SetScore(GetPoints(racers[i]));
+                if (!racers[i].finished)
+                {
+                    racers[i].SetScore(GetPoints(racers[i]));
+                }
             }
-        }
-        SetOrder(finished);
-        for (int i = 0; i < racers.Count; i++)
-        {
-            racers[i].racePosition = i + 1;
-        }
+            SetOrder(finished);
+            for (int i = 0; i < racers.Count; i++)
+            {
+                racers[i].racePosition = racers.IndexOf(racers[i]) + 1;
+            }
     }
 
     private void SetOrder(List<Racer> finished)

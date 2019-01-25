@@ -22,6 +22,7 @@ public class CarPartsSpawn : MonoBehaviour
         }
         Instantiate(_hat, hat);
         Instantiate(_beard, beard);
-        character.material = charMaterial;      
+        character.material = charMaterial;
+        IGP_Manager.instance.allIGP.Add(GetComponentInChildren<IGP>());
     }
 }

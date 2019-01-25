@@ -55,7 +55,18 @@ public class Car_Char_Sel_Manager : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
+    private int AmountPlayers()
+    {
+        int o = 0;
+        for (int i = 0; i < current.Count; i++)
+        {
+            if(current[i] == CustomazationIndex.ready)
+            {
+                o++;
+            }
+        }
+        return o;
+    }
     void Update()
     {
         if (Ready())
@@ -63,7 +74,8 @@ public class Car_Char_Sel_Manager : MonoBehaviour
             ready.SetActive(true);
             if (Input.GetButtonDown("Start"))
             {
-                GameManager.instance.StartGame();
+                GameManager.instance.StartGame(AmountPlayers());
+                UIManager.instance.OnMenuChanged(UIManager.MenuType.inGame);
                 for (int i = 0; i < PlayerManager.instance.allPlayers.Count; i++)
                 {
                     PlayerManager.instance.allPlayers[i].SpawnItems(carObj[carChar[i].currentCar], wheelObj[carChar[i].currentWheels], hatObj[carChar[i].currentHat], beardObj[carChar[i].currentBeard], genderMat[carChar[i].currentGender]);

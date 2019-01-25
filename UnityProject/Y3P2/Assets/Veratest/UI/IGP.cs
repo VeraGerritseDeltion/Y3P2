@@ -10,9 +10,14 @@ public class IGP : MonoBehaviour
     public Image itemImage;
     public TMP_Text mL;
     public TMP_Text l;
+    public bool mine;
 
     public void Position(int pos)
     {
+        if (mine)
+        {
+            print(pos);
+        }
         positionImage.sprite = IGP_Manager.instance.places[pos - 1];
     }
 
