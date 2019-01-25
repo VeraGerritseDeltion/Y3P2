@@ -50,47 +50,7 @@ public class KartPhysics : MonoBehaviour
     private bool damaged;
     private Vector3 rot;
     private bool slow;
-
-    [MenuItem("Tools/Create Empty Objects %q")]
-    public static void CreateCorners()
-    {
-        Transform obj = Selection.activeTransform;
-        BoxCollider box = obj.GetComponent<BoxCollider>();
-
-        Transform corners = CreateEmptyGameObject("Corners", Vector3.zero, obj);
-        corners.localPosition = Vector3.zero;
-        corners.localScale = Vector3.one;
-
-        CreateEmptyGameObject("FL Corner", corners.TransformPoint(box.center + new Vector3(-box.size.x, -box.size.y, box.size.z) * 0.5f), corners);
-        CreateEmptyGameObject("FR Corner", corners.TransformPoint(box.center + new Vector3(box.size.x, -box.size.y, box.size.z) * 0.5f), corners);
-        CreateEmptyGameObject("BL Corner", corners.TransformPoint(box.center + new Vector3(-box.size.x, -box.size.y, -box.size.z) * 0.5f), corners);
-        CreateEmptyGameObject("BR Corner", corners.TransformPoint(box.center + new Vector3(box.size.x, -box.size.y, -box.size.z) * 0.5f), corners);
-    }
-
-    [MenuItem("Tools/Create Empty Objects %q", true)]
-    public static bool CanCreateCorners()
-    {
-        if (Selection.activeTransform != null && Selection.activeTransform.GetComponent<BoxCollider>() != null)
-        {
-            return true;
-        }
-        else
-        {
-            Debug.LogError("Selected object doesn't have a BoxCollider!");
-            return false;
-        }
-    }
-
-    public static Transform CreateEmptyGameObject(string name, Vector3 position, Transform parent)
-    {
-        Transform obj = new GameObject(name).transform;
-        obj.parent = parent;
-        obj.position = position;
-        return obj;
-    }
-
-
-
+    
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -152,8 +112,6 @@ public class KartPhysics : MonoBehaviour
                 wheels[0].localEulerAngles = new Vector3(0, Mathf.SmoothDampAngle(wheels[0].localEulerAngles.y, rotation, ref refVelocity, wheelSmooth));
                 wheels[1].localEulerAngles = new Vector3(0, Mathf.SmoothDampAngle(wheels[1].localEulerAngles.y, rotation, ref refVelocity, wheelSmooth));
             }
-
-            rb.angularVelocity *= angularVelocityDecrease;
             //Stabilizer();
         }
         character.localRotation = Quaternion.Slerp(character.localRotation, Quaternion.Euler(new Vector3(x, 0, z)), characterRotSpeed);
