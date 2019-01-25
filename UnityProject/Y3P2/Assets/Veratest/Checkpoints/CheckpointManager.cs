@@ -102,9 +102,12 @@ public class CheckpointManager : MonoBehaviour
                 racers[i].racePosition = racers.IndexOf(racers[i]) + 1;
             }
             IGP_Manager.instance.MaxC(amoutOfLaps);
-        for (int i = 0; i < racers.Count; i++)
+        if(IGP_Manager.instance.allIGP.Count != 0)
         {
-            IGP_Manager.instance.CurC(i + 1, laps[i]);
+            for (int i = 0; i < racers.Count; i++)
+            {
+                IGP_Manager.instance.CurC(i + 1, laps[i]);
+            }
         }
     }
 
@@ -146,7 +149,7 @@ public class CheckpointManager : MonoBehaviour
         return points;
     }
 
-    private Checkpoint LastCheckpoint(Racer r)
+    public Checkpoint LastCheckpoint(Racer r)
     {
         int index = -1;
         for (int i = 0; i < allCheckpoints.Count; i++)

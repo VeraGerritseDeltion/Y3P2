@@ -243,6 +243,18 @@ public class KartPhysics : MonoBehaviour
         {
             collision.transform.GetComponent<Rigidbody>().AddForceAtPosition(heading / heading.magnitude * enginePower * 5, collision.contacts[0].point);
         }
+        else if(collision.transform.CompareTag("Bounds"))
+        {
+            stop = true;
+            rb.isKinematic = true;
+            bc.enabled = false;
+
+            transform.position = CheckpointManager.instance.LastCheckpoint(GetComponentInChildren<Racer>()).transform.position;
+
+            bc.enabled = true;
+            rb.isKinematic = false;
+            stop = false;
+        }
     }
 }
 
