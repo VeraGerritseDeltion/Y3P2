@@ -10,10 +10,12 @@ public class CarPartsSpawn : MonoBehaviour
     public Transform beard;
     public Renderer character;
 
+    
+
     public Camera myCam;
     public Camera camUI;
 
-    public void SpawnItems(GameObject _car, GameObject _wheel, GameObject _hat, GameObject _beard, Material charMaterial)
+    public void SpawnItems(GameObject _car, GameObject _wheel, GameObject _hat, GameObject _beard, Material charMaterial, int _num)
     {
         Instantiate(_car, car);
         for (int i = 0; i < wheels.Count; i++)
@@ -23,7 +25,8 @@ public class CarPartsSpawn : MonoBehaviour
         CameraFollow nC = Instantiate(myCam.gameObject, gameObject.transform).GetComponent<CameraFollow>();
         nC.car = gameObject.transform;
         nC.GetComponent<Camera>().rect = camUI.rect;
-        
+        GetComponentInChildren<KartPhysics>().playerNum = _num;
+        GetComponentInChildren<Racer>().playerNum = _num;
         nC.transform.parent = null;
         Instantiate(_hat, hat);
         Instantiate(_beard, beard);
