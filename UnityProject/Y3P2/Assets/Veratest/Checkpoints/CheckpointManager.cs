@@ -104,7 +104,7 @@ public class CheckpointManager : MonoBehaviour
             IGP_Manager.instance.MaxC(amoutOfLaps);
         for (int i = 0; i < racers.Count; i++)
         {
-            IGP_Manager.instance.CurC(i, laps[i]);
+            IGP_Manager.instance.CurC(i + 1, laps[i]);
         }
     }
 
