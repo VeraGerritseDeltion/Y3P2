@@ -14,7 +14,6 @@ public class Checkpoint : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        print("test1247859");
         Racer newInCp = other.gameObject.GetComponentInChildren<Racer>();
 
         if(newInCp != null)

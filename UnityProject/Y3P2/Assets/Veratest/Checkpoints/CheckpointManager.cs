@@ -102,6 +102,10 @@ public class CheckpointManager : MonoBehaviour
                 racers[i].racePosition = racers.IndexOf(racers[i]) + 1;
             }
             IGP_Manager.instance.MaxC(amoutOfLaps);
+        for (int i = 0; i < racers.Count; i++)
+        {
+            IGP_Manager.instance.CurC(i, laps[i]);
+        }
     }
 
     private void SetOrder(List<Racer> finished)
