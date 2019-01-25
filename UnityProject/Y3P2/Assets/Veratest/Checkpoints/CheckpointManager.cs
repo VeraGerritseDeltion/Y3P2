@@ -21,6 +21,8 @@ public class CheckpointManager : MonoBehaviour
         {
             instance = this;
         }
+
+        panelMenu.SetActive(false);
     }
 
     private void Start()
@@ -60,17 +62,6 @@ public class CheckpointManager : MonoBehaviour
             finished.Add(r);
             r.finished = true;
             r.GetComponentInParent<KartPhysics>().stop = true;
-            if(finished.Count == 4)
-            {
-                panelMenu.SetActive(true);
-                for (int i = 0; i < 4; i++)
-                {
-                    if (Input.GetButtonDown("C" + (i + 1) + " A"))
-                    {
-                        SceneManager.LoadScene(0);
-                    }
-                }
-            }
         }
         laps[r.number]++;
         int u = racers.IndexOf(r);
@@ -118,6 +109,18 @@ public class CheckpointManager : MonoBehaviour
         for (int i = 0; i < racers.Count; i++)
         {
             IGP_Manager.instance.CurC(i + 1, laps[i]);
+        }
+
+        if (finished.Count == 4)
+        {
+            panelMenu.SetActive(true);
+            for (int i = 0; i < 4; i++)
+            {
+                if (Input.GetButtonDown("C" + (i + 1) + " A"))
+                {
+                    SceneManager.LoadScene(0);
+                }
+            }
         }
     }
 

@@ -250,6 +250,7 @@ public class KartPhysics : MonoBehaviour
             bc.enabled = false;
 
             transform.position = CheckpointManager.instance.LastCheckpoint(GetComponentInChildren<Racer>()).transform.position;
+            transform.rotation = CheckpointManager.instance.LastCheckpoint(GetComponentInChildren<Racer>()).transform.rotation;
 
             bc.enabled = true;
             rb.isKinematic = false;

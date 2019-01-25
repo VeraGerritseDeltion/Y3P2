@@ -234,6 +234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerNum: 1
+  stop: 0
   raycastLenght: 0.5
   corners:
   - {fileID: 8966731612019312477}
@@ -1264,10 +1265,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3104266444024233105}
     m_Modifications:
-    - target: {fileID: 100000, guid: 6e815f0ec59e4d547a08f3c69ecb6dd3, type: 3}
-      propertyPath: m_Name
-      value: 3D_Character_Male_Basic
-      objectReference: {fileID: 0}
     - target: {fileID: 13700000, guid: 6e815f0ec59e4d547a08f3c69ecb6dd3, type: 3}
       propertyPath: m_Bones.Array.data[0]
       value: 
@@ -1584,8 +1581,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 6e815f0ec59e4d547a08f3c69ecb6dd3, type: 3}
+      propertyPath: m_Name
+      value: 3D_Character_Male_Basic
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e815f0ec59e4d547a08f3c69ecb6dd3, type: 3}
+--- !u!4 &1324363620 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400000, guid: 6e815f0ec59e4d547a08f3c69ecb6dd3,
+    type: 3}
+  m_PrefabInstance: {fileID: 1324758500}
+  m_PrefabAsset: {fileID: 0}
 --- !u!137 &1311194692 stripped
 SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: 13700000, guid: 6e815f0ec59e4d547a08f3c69ecb6dd3,
@@ -1850,12 +1857,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1324758500}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &1324363620 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 400000, guid: 6e815f0ec59e4d547a08f3c69ecb6dd3,
-    type: 3}
-  m_PrefabInstance: {fileID: 1324758500}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1324363568 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400084, guid: 6e815f0ec59e4d547a08f3c69ecb6dd3,
@@ -2007,10 +2008,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3104266444024233105}
     m_Modifications:
-    - target: {fileID: 450296215882831605, guid: 02055e31986112c45a0f53f55c9b626f,
+    - target: {fileID: 2747803053317731157, guid: 02055e31986112c45a0f53f55c9b626f,
         type: 3}
-      propertyPath: m_Name
-      value: anim+racing
+      propertyPath: m_LocalPosition.x
+      value: 3.08
       objectReference: {fileID: 0}
     - target: {fileID: 450296215882831609, guid: 02055e31986112c45a0f53f55c9b626f,
         type: 3}
@@ -2067,6 +2068,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 450296215882831605, guid: 02055e31986112c45a0f53f55c9b626f,
+        type: 3}
+      propertyPath: m_Name
+      value: anim+racing
+      objectReference: {fileID: 0}
     - target: {fileID: 450296215882831610, guid: 02055e31986112c45a0f53f55c9b626f,
         type: 3}
       propertyPath: playerNum
@@ -2092,11 +2098,11 @@ PrefabInstance:
       propertyPath: UiCam
       value: 
       objectReference: {fileID: 647844790}
-    - target: {fileID: 2747803053317731157, guid: 02055e31986112c45a0f53f55c9b626f,
+    - target: {fileID: 450296215882831610, guid: 02055e31986112c45a0f53f55c9b626f,
         type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 3.08
-      objectReference: {fileID: 0}
+      propertyPath: fini
+      value: 
+      objectReference: {fileID: 6976895427348730101}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 02055e31986112c45a0f53f55c9b626f, type: 3}
 --- !u!4 &2133275760 stripped
@@ -2274,6 +2280,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 4.9000015
       objectReference: {fileID: 0}
+    - target: {fileID: 4017442990494758517, guid: 63343a21148ddf24bb610aeba652a57e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.40000916
+      objectReference: {fileID: 0}
     - target: {fileID: 4017442990684655823, guid: 63343a21148ddf24bb610aeba652a57e,
         type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -2304,8 +2315,36 @@ PrefabInstance:
       propertyPath: m_isInputParsingRequired
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4017442989836076182, guid: 63343a21148ddf24bb610aeba652a57e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4017442989836076182, guid: 63343a21148ddf24bb610aeba652a57e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63343a21148ddf24bb610aeba652a57e, type: 3}
+--- !u!1 &6976895427348730101 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2597019339893056607, guid: 63343a21148ddf24bb610aeba652a57e,
+    type: 3}
+  m_PrefabInstance: {fileID: 4960888959129236650}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8293463531591459940 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4017442990684655822, guid: 63343a21148ddf24bb610aeba652a57e,
+    type: 3}
+  m_PrefabInstance: {fileID: 4960888959129236650}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &8293463531401806558 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4017442990494758516, guid: 63343a21148ddf24bb610aeba652a57e,
@@ -2348,15 +2387,3 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 4960888959129236650}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8293463531591459940 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4017442990684655822, guid: 63343a21148ddf24bb610aeba652a57e,
-    type: 3}
-  m_PrefabInstance: {fileID: 4960888959129236650}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

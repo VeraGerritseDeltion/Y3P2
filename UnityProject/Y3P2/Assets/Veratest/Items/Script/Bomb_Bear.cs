@@ -47,6 +47,7 @@ public class Bomb_Bear : Item
         {
             if(playersHits[i].gameObject.tag == "Car")
             {
+                // Error? NullReferenceException: Object reference not set to an instance of an object Bomb_Bear +< Explode > c__Iterator1.MoveNext()
                 playersHits[i].GetComponent<Racer>().Damage();
             }
         }

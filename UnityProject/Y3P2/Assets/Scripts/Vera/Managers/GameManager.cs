@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour {
 
     private void Update()
     {
+        /*
         if (Input.GetButton("C1 A"))
         {
             Debug.Log("Controller 1 is working!");
@@ -50,6 +51,7 @@ public class GameManager : MonoBehaviour {
         {
             Debug.Log("Controller 4 is working!");
         }
+        */
     }
 
     public void ExitGame()
