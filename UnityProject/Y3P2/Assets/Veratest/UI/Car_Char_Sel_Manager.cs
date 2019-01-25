@@ -79,7 +79,7 @@ public class Car_Char_Sel_Manager : MonoBehaviour
                 UIManager.instance.OnMenuChanged(UIManager.MenuType.inGame);
                 for (int i = 0; i < PlayerManager.instance.allPlayers.Count; i++)
                 {
-                    PlayerManager.instance.allPlayers[i].SpawnItems(carObj[carChar[i].currentCar], wheelObj[carChar[i].currentWheels], hatObj[carChar[i].currentHat], beardObj[carChar[i].currentBeard], genderMat[carChar[i].currentGender],allControlers[i]);
+                    PlayerManager.instance.allPlayers[i].SpawnItems(carObj[carChar[i].currentCar], wheelObj[carChar[i].currentWheels], hatObj[carChar[i].currentHat], beardObj[carChar[i].currentBeard], genderMat[carChar[i].currentGender]);
                 }
                 
             }
