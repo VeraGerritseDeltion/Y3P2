@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour {
             UIManager.instance.OnMenuChanged(UIManager.MenuType.inGame);
             LevelManager.instance.PlacePlayers(con);
             CheckpointManager.instance.Circuit();
+        PlayerManager.instance.RSG();
             racing = true;
             played = true;
     }

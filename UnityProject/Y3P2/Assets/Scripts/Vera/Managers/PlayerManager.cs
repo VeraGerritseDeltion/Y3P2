@@ -24,7 +24,7 @@ public class PlayerManager : MonoBehaviour
     {
         for (int i = 0; i < allPlayers.Count; i++)
         {
-            //allPlayers[i].GetComponent<KartPhysics>().stop = true;
+            allPlayers[i].GetComponent<KartPhysics>().stop = true;
         }
         StartCoroutine(Timer());
     }
@@ -40,7 +40,7 @@ public class PlayerManager : MonoBehaviour
         rSG.sprite = rsg[2];
         for (int i = 0; i < allPlayers.Count; i++)
         {
-            //allPlayers[i].GetComponent<KartPhysics>().stop = false;
+            allPlayers[i].GetComponent<KartPhysics>().stop = false;
         }
         yield return new WaitForSeconds(1);
         rSG.enabled = false;

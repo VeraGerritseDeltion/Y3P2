@@ -25,9 +25,9 @@ public class LevelManager : MonoBehaviour
             GameObject nP = Instantiate(player, currentLevel.startLocations[i].position, Quaternion.Euler( currentLevel.startLocations[i].rotation.x, currentLevel.startLocations[i].rotation.y+ 90, currentLevel.startLocations[i].rotation.x));
             KartPhysics r = nP.GetComponentInChildren<KartPhysics>();
             Racer t = nP.GetComponentInChildren<Racer>();
-            t.playerNum = i + 1;
-            r.playerNum = i +1;            
-            CarPartsSpawn p = nP.GetComponentInChildren<CarPartsSpawn>();   
+            CarPartsSpawn p = nP.GetComponentInChildren<CarPartsSpawn>();
+            t.playerNum = p.num;
+            r.playerNum = p.num;            
             PlayerManager.instance.AddPlayer(p);
         }
         if (controlers == 1)
