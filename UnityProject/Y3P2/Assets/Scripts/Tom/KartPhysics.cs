@@ -38,7 +38,7 @@ public class KartPhysics : MonoBehaviour
     [Header("Stabilizing"),SerializeField] private float stabilizer = 0.3f;
     [SerializeField] private float stabilzingSpeed = 2f;
 
-    private PlayerInput playerInput;
+    private PlayerInput playerInput = new PlayerInput();
     private RaycastHit rh;
     private Rigidbody rb;
     private BoxCollider bc;
@@ -51,7 +51,6 @@ public class KartPhysics : MonoBehaviour
     private bool damaged;
     private Vector3 rot;
     private bool slow;
-    private PlayerInput input;
     
     private void Start()
     {
@@ -127,10 +126,10 @@ public class KartPhysics : MonoBehaviour
 
     private void GetPlayerInput()
     {
-        input.forward = Input.GetButton("C" + playerNum + " A");
-        input.backward = Input.GetButton("C" + playerNum + " B");
-        input.horizontal = Input.GetAxis("C" + playerNum + " Hor");
-        input.drifting = Input.GetButton("C" + playerNum + " LB");
+        playerInput.forward = Input.GetButton("C" + playerNum + " A");
+        playerInput.backward = Input.GetButton("C" + playerNum + " B");
+        playerInput.horizontal = Input.GetAxis("C" + playerNum + " Hor");
+        playerInput.drifting = Input.GetButton("C" + playerNum + " LB");
     }
 
     private void Stabilizer()
