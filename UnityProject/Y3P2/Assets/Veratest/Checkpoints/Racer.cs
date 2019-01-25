@@ -46,7 +46,7 @@ public class Racer : MonoBehaviour
     }
     private void Update()
     {
-        //fini.SetActive(finished);
+        fini.SetActive(finished);
         IGP_Manager.instance.UpdatePos(playerNum, racePosition);
 
         if(Input.GetButtonDown("C2 A"))

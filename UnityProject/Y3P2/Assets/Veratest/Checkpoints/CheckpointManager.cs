@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CheckpointManager : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class CheckpointManager : MonoBehaviour
     public List<Racer> racers = new List<Racer>();
     private List<bool> fc = new List<bool>();
 
-
+    public GameObject panelMenu;
     private void Awake()
     {
         if(instance == null)
@@ -58,6 +59,18 @@ public class CheckpointManager : MonoBehaviour
         {
             finished.Add(r);
             r.finished = true;
+            r.GetComponentInParent<KartPhysics>().stop = true;
+            if(finished.Count == 4)
+            {
+                panelMenu.SetActive(true);
+                for (int i = 0; i < 4; i++)
+                {
+                    if (Input.GetButtonDown("C" + (i + 1) + " A"))
+                    {
+                        SceneManager.LoadScene(0);
+                    }
+                }
+            }
         }
         laps[r.number]++;
         int u = racers.IndexOf(r);
@@ -102,12 +115,9 @@ public class CheckpointManager : MonoBehaviour
                 racers[i].racePosition = racers.IndexOf(racers[i]) + 1;
             }
             IGP_Manager.instance.MaxC(amoutOfLaps);
-        if(IGP_Manager.instance.allIGP.Count != 0)
+        for (int i = 0; i < racers.Count; i++)
         {
-            for (int i = 0; i < racers.Count; i++)
-            {
-                IGP_Manager.instance.CurC(i + 1, laps[i]);
-            }
+            IGP_Manager.instance.CurC(i + 1, laps[i]);
         }
     }
 
