@@ -11,6 +11,7 @@ public class PlayerManager : MonoBehaviour
 
     public Image rSG;
     public List<Sprite> rsg = new List<Sprite>();
+    public AudioSource audio;
 
     private void Awake()
     {
@@ -22,6 +23,7 @@ public class PlayerManager : MonoBehaviour
 
     public void RSG()
     {
+        audio.Play();
         for (int i = 0; i < allPlayers.Count; i++)
         {
             allPlayers[i].GetComponent<KartPhysics>().stop = true;
