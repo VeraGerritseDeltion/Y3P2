@@ -49,6 +49,10 @@ public class Racer : MonoBehaviour
         //fini.SetActive(finished);
         IGP_Manager.instance.UpdatePos(playerNum, racePosition);
 
+        if(Input.GetButtonDown("C2 A"))
+        {
+            print("REEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEe");
+        }
         if (Input.GetButtonDown("C" + playerNum + " X") || Input.GetButtonDown("C" + playerNum + " Y"))
         {
             if(myItem!= null)
@@ -79,6 +83,6 @@ public class Racer : MonoBehaviour
 
     public void Damage()
     {
-        //GetComponentInParent<KartPhysics>().Damaged();
+        GetComponentInParent<KartPhysics>().Damaged();
     }
 }

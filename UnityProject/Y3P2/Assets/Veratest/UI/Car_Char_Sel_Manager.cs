@@ -69,6 +69,7 @@ public class Car_Char_Sel_Manager : MonoBehaviour
     }
     void Update()
     {
+
         if (Ready())
         {
             ready.SetActive(true);
@@ -216,7 +217,6 @@ public class Car_Char_Sel_Manager : MonoBehaviour
                 allReady = false;
             }
         }
-        print(minPlayer + "           " + allReady);
         if(minPlayer && allReady)
         {
             return true;
@@ -276,7 +276,6 @@ public class Car_Char_Sel_Manager : MonoBehaviour
 
         carChar[panel].panel = panel;
         carChar[panel].StartMe();
-        print(con);
         carChar[panel].controller = con;
     }
 }

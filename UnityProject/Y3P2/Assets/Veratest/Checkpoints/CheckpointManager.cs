@@ -29,7 +29,7 @@ public class CheckpointManager : MonoBehaviour
 
     public void Circuit()
     {
-        IGP_Manager.instance.MaxC(amoutOfLaps);
+        
     }
 
     public int GetNumber(Racer myRacer)
@@ -101,6 +101,7 @@ public class CheckpointManager : MonoBehaviour
             {
                 racers[i].racePosition = racers.IndexOf(racers[i]) + 1;
             }
+            IGP_Manager.instance.MaxC(amoutOfLaps);
     }
 
     private void SetOrder(List<Racer> finished)

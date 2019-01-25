@@ -20,6 +20,11 @@ public class CarPartsSpawn : MonoBehaviour
         {
             Instantiate(_wheel, wheels[i]);
         }
+        CameraFollow nC = Instantiate(myCam.gameObject, gameObject.transform).GetComponent<CameraFollow>();
+        nC.car = gameObject.transform;
+        nC.playerNum = GetComponentInChildren<Racer>().playerNum;
+        nC.GetComponent<Camera>().rect = camUI.rect;
+        nC.transform.parent = null;
         Instantiate(_hat, hat);
         Instantiate(_beard, beard);
         character.material = charMaterial;

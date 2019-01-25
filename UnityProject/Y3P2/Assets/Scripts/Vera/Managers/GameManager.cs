@@ -26,6 +26,31 @@ public class GameManager : MonoBehaviour {
             played = true;
     }
 
+    public void StartRace()
+    {
+
+    }
+
+    private void Update()
+    {
+        if (Input.GetButton("C1 A"))
+        {
+            Debug.Log("Controller 1 is working!");
+        }
+        if (Input.GetButton("C2 A"))
+        {
+            Debug.Log("Controller 2 is working!");
+        }
+        if (Input.GetButton("C3 A"))
+        {
+            Debug.Log("Controller 3 is working!");
+        }
+        if (Input.GetButton("C4 A"))
+        {
+            Debug.Log("Controller 4 is working!");
+        }
+    }
+
     public void ExitGame()
     {
         Application.Quit();

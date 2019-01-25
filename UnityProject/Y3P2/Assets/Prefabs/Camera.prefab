@@ -50,9 +50,9 @@ Camera:
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0
+    x: 0.5
     y: 0
-    width: 1
+    width: 0.5
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
@@ -86,8 +86,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1091d75d4a5abe4e995acd155a05c7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  test: 0
   car: {fileID: 0}
+  playerNum: 0
   dal: {x: 1, y: 1.5}
   dbc: {x: 5, y: -4.5}
   dac: {x: 1.5, y: 1}
