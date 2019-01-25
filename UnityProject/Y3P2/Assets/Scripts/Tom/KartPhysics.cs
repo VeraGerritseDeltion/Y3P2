@@ -7,6 +7,7 @@ using UnityEditor;
 public class KartPhysics : MonoBehaviour
 {
     public int playerNum = 1;
+    public bool stop;
 
     [Header("Suspension"),SerializeField] private float raycastLenght = 0.6f;
     [SerializeField] private Transform[] corners = new Transform[4];
@@ -50,6 +51,7 @@ public class KartPhysics : MonoBehaviour
     private bool damaged;
     private Vector3 rot;
     private bool slow;
+    private PlayerInput input;
     
     private void Start()
     {
@@ -65,7 +67,7 @@ public class KartPhysics : MonoBehaviour
 
         float x = 0f, z = 0f;
 
-        if (!damaged)
+        if (!damaged && !stop)
         {
             if (touchingGround > 1)
             {
@@ -116,17 +118,19 @@ public class KartPhysics : MonoBehaviour
         character.localRotation = Quaternion.Slerp(character.localRotation, Quaternion.Euler(new Vector3(x, 0, z)), characterRotSpeed);
 
         rb.angularVelocity *= angularVelocityDecrease;
+
+        if(touchingGround < 1)
+        {
+            rb.velocity -= new Vector3(0, 20, 0) * Time.deltaTime;
+        }
     }
 
-    private PlayerInput GetPlayerInput()
+    private void GetPlayerInput()
     {
-        return new PlayerInput()
-        {
-            forward = Input.GetButton("C" + playerNum + " A"),
-            backward = Input.GetButton("C" + playerNum + " B"),
-            horizontal = Input.GetAxis("C" + playerNum + " Hor"),
-            drifting = Input.GetButton("C" + playerNum + " LB")
-        };
+        input.forward = Input.GetButton("C" + playerNum + " A");
+        input.backward = Input.GetButton("C" + playerNum + " B");
+        input.horizontal = Input.GetAxis("C" + playerNum + " Hor");
+        input.drifting = Input.GetButton("C" + playerNum + " LB");
     }
 
     private void Stabilizer()
@@ -140,16 +144,14 @@ public class KartPhysics : MonoBehaviour
     private void Suspension()
     {
         touchingGround = 0;
-        groundNormal = Vector3.zero;
+        groundNormal = Vector3.up;
 
         slow = false;
 
         for (int i = 0; i < corners.Length; i++)
         {
             float compressionRatio = GetCompressionRatio(corners[i].position, -corners[i].up);
-
             
-
             Vector3 cF = Vector3.Project(rb.GetPointVelocity(corners[i].position), transform.up); // Calculate the current suspension force.
             Vector3 nF = transform.up * compressionRatio * suspensionStrenght; // Calculate the new suspension force.
 
@@ -160,14 +162,16 @@ public class KartPhysics : MonoBehaviour
             //Debug.DrawLine(rh.point, rh.point + Vector3.ProjectOnPlane(-rb.GetPointVelocity(corners[i].position), rh.normal) * (playerInput.drifting ? gripDrift : grip), Color.red);
             //rb.AddForceAtPosition(Vector3.ProjectOnPlane(-rb.GetPointVelocity(corners[i].position), rh.normal) * (playerInput.drifting ? gripDrift : grip), rh.point, ForceMode.Acceleration);
         }
-
-        Debug.DrawLine(centerOfMass.position + Vector3.up, centerOfMass.position + Vector3.up + Vector3.ProjectOnPlane(rb.velocity, rh.normal), Color.red);
-        Debug.DrawLine(centerOfMass.position + Vector3.up, centerOfMass.position + Vector3.up + Vector3.ProjectOnPlane(-rb.velocity, rh.normal) * grip, Color.blue);
-        rb.AddForceAtPosition(Vector3.ProjectOnPlane(-rb.velocity, rh.normal) * grip, centerOfMass.position, ForceMode.Acceleration);
-
-        if(touchingGround > 0)
+        if (touchingGround > 0)
         {
+            Debug.DrawLine(centerOfMass.position + Vector3.up, centerOfMass.position + Vector3.up + Vector3.ProjectOnPlane(-rb.velocity, rh.normal) * grip, Color.blue);
+            //rb.AddForceAtPosition(Vector3.ProjectOnPlane(-rb.velocity, rh.normal) * grip, centerOfMass.position, ForceMode.Acceleration);
+            rb.AddForceAtPosition(-rb.velocity * grip, centerOfMass.position, ForceMode.Acceleration);
             groundNormal = new Vector3(groundNormal.x / touchingGround, groundNormal.y / touchingGround, groundNormal.z / touchingGround);
+        }
+        else
+        {
+            groundNormal = Vector3.up;
         }
     }
 
@@ -191,13 +195,17 @@ public class KartPhysics : MonoBehaviour
     {
         if (playerInput.forward)
         {
-            rb.AddForceAtPosition(Vector3.ProjectOnPlane(transform.forward, groundNormal) * (slow ? enginePower * slowValue : enginePower), centerOfMass.position, ForceMode.Acceleration);
+            //rb.AddForceAtPosition(Vector3.ProjectOnPlane(transform.forward, groundNormal) * (slow ? enginePower * slowValue : enginePower), centerOfMass.position, ForceMode.Acceleration);
+            rb.AddForceAtPosition(transform.forward * (slow ? enginePower * slowValue : enginePower), centerOfMass.position, ForceMode.Acceleration);
 
         }
         else if (playerInput.backward)
         {
-            rb.AddForceAtPosition(Vector3.ProjectOnPlane(-transform.forward, groundNormal) * (slow ? enginePower * slowValue : enginePower), centerOfMass.position, ForceMode.Acceleration);
+            //rb.AddForceAtPosition(Vector3.ProjectOnPlane(-transform.forward, groundNormal) * (slow ? enginePower * slowValue : enginePower), centerOfMass.position, ForceMode.Acceleration);
+            rb.AddForceAtPosition(-transform.forward * (slow ? enginePower * slowValue : enginePower), centerOfMass.position, ForceMode.Acceleration);
         }
+
+        //Debug.DrawLine(centerOfMass.position + Vector3.up, centerOfMass.position + Vector3.up + Vector3.ProjectOnPlane(rb.velocity, rh.normal), Color.red);
     }
 
     public void Damaged()
@@ -239,7 +247,7 @@ public class KartPhysics : MonoBehaviour
     }
 }
 
-public struct PlayerInput
+public class PlayerInput
 {
     public bool forward;
     public bool backward;
