@@ -105,7 +105,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &243378297734602556
 RectTransform:
   m_ObjectHideFlags: 0
@@ -254,7 +254,6 @@ MonoBehaviour:
   - {fileID: 6280794500624081320, guid: a4b469b1a77342048890bb3b3c9dacab, type: 3}
   - {fileID: 4098963471631868611, guid: d3953209e41d4264f9327e5b67973277, type: 3}
   - {fileID: 4231829044253307979, guid: fa1ca94d1c25e0449bc954adeb0ca081, type: 3}
-  headers: []
   CarSelection:
   - {fileID: 6560205301987658847}
   - {fileID: 2747391581625520004}

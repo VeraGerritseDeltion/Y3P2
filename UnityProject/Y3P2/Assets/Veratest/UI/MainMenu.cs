@@ -19,6 +19,7 @@ public class MainMenu : MonoBehaviour
     {
         if(Input.GetAxis("C1 Hor") > 0 || Input.GetAxis("C1 Vert") < 0)
         {
+            print("reeeeeeeeeeeeee");
             if (!cD)
             {
                 currentB++;
