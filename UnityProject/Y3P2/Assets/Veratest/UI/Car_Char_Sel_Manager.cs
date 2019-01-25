@@ -200,7 +200,7 @@ public class Car_Char_Sel_Manager : MonoBehaviour
             
     }
 
-    private List<int> allControlers = new List<int>();
+    private List<int> allControlers = new List<int>(4);
 
     private bool Ready()
     {
@@ -249,7 +249,7 @@ public class Car_Char_Sel_Manager : MonoBehaviour
         }
         if (!exist)
         {
-            allControlers.Add(index);
+            allControlers[index - 1] = index;
             AddPlayer(allControlers.Count - 1, index);
         }
     }
