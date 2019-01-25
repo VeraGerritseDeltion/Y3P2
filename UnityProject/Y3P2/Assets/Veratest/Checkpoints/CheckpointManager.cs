@@ -62,6 +62,7 @@ public class CheckpointManager : MonoBehaviour
             finished.Add(r);
             r.finished = true;
             r.GetComponentInParent<KartPhysics>().stop = true;
+            return;
         }
         laps[r.number]++;
         int u = racers.IndexOf(r);
