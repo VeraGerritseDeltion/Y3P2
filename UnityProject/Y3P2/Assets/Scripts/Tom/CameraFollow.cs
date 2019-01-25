@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    public bool test;
+    public Transform car;
+    public int playerNum;
 
-    [SerializeField] private Transform car;
     [SerializeField] private Vector2 dal = new Vector2(1f, 1f);
     [SerializeField] private Vector2 dbc = new Vector2(5,-3);
     [SerializeField] private Vector2 dac = new Vector2(2, 1);
@@ -16,23 +16,9 @@ public class CameraFollow : MonoBehaviour
     private Vector3 v;
     private float ds;
     private Vector3 dp;
-
-    private int pn;
+    
     private bool drifting;
     private bool lookBehind;
-
-    private void Start()
-    {
-        if (car == null)
-        {
-            Debug.LogError(name + " has no car assigned!");
-            return;
-        }
-        else
-        {
-            pn = car.GetComponent<KartPhysics>().playerNum;
-        }
-    }
 
     private void FixedUpdate()
     {
@@ -42,8 +28,8 @@ public class CameraFollow : MonoBehaviour
             return;
         }
 
-        drifting = Input.GetButton("C" + pn + " LB");
-        lookBehind = Input.GetButton("C" + pn + " Y");
+        drifting = Input.GetButton("C" + playerNum + " LB");
+        lookBehind = Input.GetButton("C" + playerNum + " Y");
 
         
 

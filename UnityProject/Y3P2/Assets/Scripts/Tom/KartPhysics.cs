@@ -103,7 +103,6 @@ public class KartPhysics : MonoBehaviour
             {
                 //Debug.Log(new Vector3(rb.angularVelocity.x, rb.angularVelocity.y, rb.angularVelocity.z) * velocityDecrease);
                 //rb.angularVelocity = Vector3.Slerp(rb.angularVelocity, new Vector3(rb.angularVelocity.x, rb.angularVelocity.y, rb.angularVelocity.z) * velocityDecrease, characterRotSpeed); //change!
-                //rb.angularVelocity *= angularVelocityDecrease;
             }
             else
             {
@@ -115,6 +114,8 @@ public class KartPhysics : MonoBehaviour
             //Stabilizer();
         }
         character.localRotation = Quaternion.Slerp(character.localRotation, Quaternion.Euler(new Vector3(x, 0, z)), characterRotSpeed);
+
+        rb.angularVelocity *= angularVelocityDecrease;
     }
 
     private PlayerInput GetPlayerInput()
