@@ -62,7 +62,7 @@ public class KartPhysics : MonoBehaviour
 
     private void FixedUpdate()
     {
-        playerInput = GetPlayerInput();
+        GetPlayerInput();
         Suspension();
 
         float x = 0f, z = 0f;
