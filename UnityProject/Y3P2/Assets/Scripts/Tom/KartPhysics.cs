@@ -289,6 +289,16 @@ public class KartPhysics : MonoBehaviour
             return y;
         }
     }
+
+    public void SpeedBoost (int boost)
+    {
+        enginePower += boost;
+    }
+
+    public void StopBoost(int boost)
+    {
+        enginePower -= boost;
+    }
 }
 
 public class PlayerInput
