@@ -288,7 +288,7 @@ MonoBehaviour:
   hat: {fileID: 3016130501824372599}
   beard: {fileID: 1707981943066677007}
   character: {fileID: 1311194692}
-  myCam: {fileID: 7626029132200743628, guid: eaeb1e1ba05579b40bc76898fb67f567, type: 3}
+  myCam: {fileID: 810, guid: eaeb1e1ba05579b40bc76898fb67f567, type: 3}
   camUI: {fileID: 131622036837253630}
 --- !u!1 &3104266444770065532
 GameObject:
@@ -2265,6 +2265,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_isInputParsingRequired
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1703202703303495729, guid: 63343a21148ddf24bb610aeba652a57e,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63343a21148ddf24bb610aeba652a57e, type: 3}
