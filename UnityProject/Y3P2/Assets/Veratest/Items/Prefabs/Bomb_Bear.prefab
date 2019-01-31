@@ -117,7 +117,7 @@ MonoBehaviour:
   myObject: {fileID: 994927018}
   chance: 0
   myRacer: {fileID: 0}
-  speed: 2000
+  speed: 3000
   angle: 200
   timer: 2
   part: {fileID: 2094974465603730737}

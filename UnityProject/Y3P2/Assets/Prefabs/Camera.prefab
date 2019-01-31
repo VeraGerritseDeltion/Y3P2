@@ -52,9 +52,9 @@ Camera:
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.5
+    x: 0
     y: 0
-    width: 0.5
+    width: 1
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
@@ -90,9 +90,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   car: {fileID: 0}
   playerNum: 0
-  dal: {x: 1, y: 1.5}
-  dbc: {x: 5, y: -4.5}
-  dac: {x: 1.5, y: 1}
+  dal: {x: 2.5, y: 1.5}
+  dbc: {x: 10, y: -7}
+  dac: {x: 6, y: 2}
   smoothingDistance: 15
   smoothingValues: {x: 0.1, y: 0.25}
 --- !u!114 &475453515691190058
