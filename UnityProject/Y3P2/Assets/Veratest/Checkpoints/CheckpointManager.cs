@@ -21,7 +21,6 @@ public class CheckpointManager : MonoBehaviour
         {
             instance = this;
         }
-
         panelMenu.SetActive(false);
     }
 
@@ -193,5 +192,32 @@ public class CheckpointManager : MonoBehaviour
             return -1;
         }
         return d;
+    }
+
+    public GameObject NextTarget(Racer own)
+    {
+        int index = racers.IndexOf(own);
+        if( index <= 0)
+        {
+            return null;
+        }
+        if(index - 1 >= 0)
+        {
+            if(LastCheckpoint(own) == LastCheckpoint(racers[index - 1]))
+            {
+                return racers[index - 1].transform.root.gameObject;
+            }
+            else
+            {
+                int ind = allCheckpoints.IndexOf(LastCheckpoint(own));
+                ind++;
+                if (ind == allCheckpoints.Count)
+                {
+                    ind = 0;
+                }
+                return allCheckpoints[ind].gameObject;
+            }
+        }
+        return null;
     }
 }

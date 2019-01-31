@@ -7,6 +7,7 @@ public class ItemBox : MonoBehaviour
 
     bool cooldown;
     public MeshRenderer box;
+    [SerializeField] private GameObject test;
 
     private void OnTriggerStay(Collider other)
     {
@@ -15,10 +16,21 @@ public class ItemBox : MonoBehaviour
             Racer r = other.GetComponentInChildren<Racer>();
             if(r.myItem == null)
             {
-                r.NewItem(Item_Manager.instance.GetItem());
-                box.enabled = false;
-                cooldown = true;
-                StartCoroutine(Cooldown());
+                if (test == null)
+                {
+                    r.NewItem(Item_Manager.instance.GetItem());
+                    box.enabled = false;
+                    cooldown = true;
+                    StartCoroutine(Cooldown());
+                }
+                else
+                {
+                    r.NewItem(test);
+                    box.enabled = false;
+                    cooldown = true;
+                    StartCoroutine(Cooldown());
+                }
+
             }        
         }
     }
