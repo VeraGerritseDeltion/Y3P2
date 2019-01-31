@@ -235,7 +235,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerNum: 1
   stop: 0
-  hitEffect: {fileID: 0}
+  hitEffect: {fileID: 400004, guid: fb7b0526ade434043b350a180d741cf3, type: 3}
   raycastLenght: 0.5
   corners:
   - {fileID: 8966731612019312477}
@@ -1266,10 +1266,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3104266444024233105}
     m_Modifications:
-    - target: {fileID: 100000, guid: 6e815f0ec59e4d547a08f3c69ecb6dd3, type: 3}
-      propertyPath: m_Name
-      value: 3D_Character_Male_Basic
-      objectReference: {fileID: 0}
     - target: {fileID: 13700000, guid: 6e815f0ec59e4d547a08f3c69ecb6dd3, type: 3}
       propertyPath: m_Bones.Array.data[0]
       value: 
@@ -1585,6 +1581,10 @@ PrefabInstance:
     - target: {fileID: 400000, guid: 6e815f0ec59e4d547a08f3c69ecb6dd3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 6e815f0ec59e4d547a08f3c69ecb6dd3, type: 3}
+      propertyPath: m_Name
+      value: 3D_Character_Male_Basic
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e815f0ec59e4d547a08f3c69ecb6dd3, type: 3}
@@ -2009,10 +2009,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3104266444024233105}
     m_Modifications:
-    - target: {fileID: 450296215882831605, guid: 02055e31986112c45a0f53f55c9b626f,
+    - target: {fileID: 2747803053317731157, guid: 02055e31986112c45a0f53f55c9b626f,
         type: 3}
-      propertyPath: m_Name
-      value: anim+racing
+      propertyPath: m_LocalPosition.x
+      value: 3.08
       objectReference: {fileID: 0}
     - target: {fileID: 450296215882831609, guid: 02055e31986112c45a0f53f55c9b626f,
         type: 3}
@@ -2069,6 +2069,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 450296215882831605, guid: 02055e31986112c45a0f53f55c9b626f,
+        type: 3}
+      propertyPath: m_Name
+      value: anim+racing
+      objectReference: {fileID: 0}
     - target: {fileID: 450296215882831610, guid: 02055e31986112c45a0f53f55c9b626f,
         type: 3}
       propertyPath: playerNum
@@ -2099,11 +2104,6 @@ PrefabInstance:
       propertyPath: UiCam
       value: 
       objectReference: {fileID: 647844790}
-    - target: {fileID: 2747803053317731157, guid: 02055e31986112c45a0f53f55c9b626f,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 3.08
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 02055e31986112c45a0f53f55c9b626f, type: 3}
 --- !u!95 &2264648668544027006 stripped
@@ -2249,22 +2249,22 @@ PrefabInstance:
     - target: {fileID: 4017442990494758516, guid: 63343a21148ddf24bb610aeba652a57e,
         type: 3}
       propertyPath: m_havePropertiesChanged
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4017442990494758516, guid: 63343a21148ddf24bb610aeba652a57e,
         type: 3}
       propertyPath: m_isInputParsingRequired
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4017442990684655822, guid: 63343a21148ddf24bb610aeba652a57e,
         type: 3}
       propertyPath: m_havePropertiesChanged
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4017442990684655822, guid: 63343a21148ddf24bb610aeba652a57e,
         type: 3}
       propertyPath: m_isInputParsingRequired
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63343a21148ddf24bb610aeba652a57e, type: 3}

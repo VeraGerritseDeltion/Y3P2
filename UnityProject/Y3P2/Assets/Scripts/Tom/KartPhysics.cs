@@ -187,6 +187,10 @@ public class KartPhysics : MonoBehaviour
             {
                 slow = true;
             }
+            else if (rh.transform.CompareTag("Bounds"))
+            {
+                Respawn();
+            }
             return 1 - (rh.distance / raycastLenght);
         }
         else return 0;
@@ -249,16 +253,40 @@ public class KartPhysics : MonoBehaviour
         }
         else if(collision.transform.CompareTag("Bounds"))
         {
-            stop = true;
-            rb.isKinematic = true;
-            bc.enabled = false;
+            Respawn();
+        }
+        print("<color=blue>" + collision.transform.tag + "</color>");
+    }
 
-            transform.position = CheckpointManager.instance.LastCheckpoint(GetComponentInChildren<Racer>()).transform.position;
-            transform.rotation = CheckpointManager.instance.LastCheckpoint(GetComponentInChildren<Racer>()).transform.rotation;
+    private void Respawn()
+    {
+        stop = true;
+        rb.isKinematic = true;
+        bc.enabled = false;
 
-            bc.enabled = true;
-            rb.isKinematic = false;
-            stop = false;
+        Transform lastCheckpoint = CheckpointManager.instance.LastCheckpoint(GetComponentInChildren<Racer>()).transform;
+
+        transform.position = lastCheckpoint.position;
+        transform.eulerAngles = new Vector3(transform.eulerAngles.x, GetProperRot(lastCheckpoint.eulerAngles.y), transform.eulerAngles.z);
+
+        bc.enabled = true;
+        rb.isKinematic = false;
+        stop = false;
+    }
+
+    private float GetProperRot(float y)
+    {
+        if(y < 0)
+        {
+            return y - 180f;
+        }
+        else if (y > 0)
+        {
+            return y + 180f;
+        }
+        else
+        {
+            return y;
         }
     }
 }
