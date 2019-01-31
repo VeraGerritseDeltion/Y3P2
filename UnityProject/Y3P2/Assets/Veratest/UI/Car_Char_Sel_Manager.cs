@@ -128,21 +128,21 @@ public class Car_Char_Sel_Manager : MonoBehaviour
                     Highlight(0, i);
                     break;
                 case CustomazationIndex.gender:
-                    CarSelection[i].SetActive(false);
+                    CarSelection[i].SetActive(true);
                     CharSelection[i].SetActive(true);
                     readyStamp[i].SetActive(false);
                     playerText[i].text = "Select your character.";
                     Highlight(1, i);
                     break;
                 case CustomazationIndex.hat:
-                    CarSelection[i].SetActive(false);
+                    CarSelection[i].SetActive(true);
                     CharSelection[i].SetActive(true);
                     readyStamp[i].SetActive(false);
                     playerText[i].text = "Select your character.";
                     Highlight(2, i);
                     break;
                 case CustomazationIndex.beard:
-                    CarSelection[i].SetActive(false);
+                    CarSelection[i].SetActive(true);
                     CharSelection[i].SetActive(true);
                     readyStamp[i].SetActive(false);
                     playerText[i].text = "Select your character.";
@@ -150,14 +150,14 @@ public class Car_Char_Sel_Manager : MonoBehaviour
                     break;
                 case CustomazationIndex.car:
                     CarSelection[i].SetActive(true);
-                    CharSelection[i].SetActive(false);
+                    CharSelection[i].SetActive(true);
                     readyStamp[i].SetActive(false);
                     playerText[i].text = "Select your car.";
                     Highlight(4, i);
                     break;
                 case CustomazationIndex.wheels:
                     CarSelection[i].SetActive(true);
-                    CharSelection[i].SetActive(false);
+                    CharSelection[i].SetActive(true);
                     readyStamp[i].SetActive(false);
                     playerText[i].text = "Select your car.";
                     Highlight(5, i);
