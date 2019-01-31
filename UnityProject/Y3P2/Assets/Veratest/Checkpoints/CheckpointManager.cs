@@ -112,10 +112,10 @@ public class CheckpointManager : MonoBehaviour
             IGP_Manager.instance.CurC(i + 1, laps[i]);
         }
 
-        if (finished.Count == 4)
+        if (finished.Count == PlayerManager.instance.allPlayers.Count && GameManager.instance.played == true)
         {
             panelMenu.SetActive(true);
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < PlayerManager.instance.allPlayers.Count; i++)
             {
                 if (Input.GetButtonDown("C" + (i + 1) + " A"))
                 {

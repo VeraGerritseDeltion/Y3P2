@@ -52,7 +52,7 @@ public class Racer : MonoBehaviour
             IGP_Manager.instance.UpdatePos(playerNum, racePosition);
         }
         
-        if (Input.GetButtonDown("C" + playerNum + " X") || Input.GetButtonDown("C" + playerNum + " Y"))
+        if (Input.GetButtonDown("C" + playerNum + " X"))
         {
             if(myItem!= null)
             {
@@ -64,7 +64,7 @@ public class Racer : MonoBehaviour
                 ni.Use(this);
             }
         }
-        if (Input.GetButtonUp("C" + playerNum + " X") || Input.GetButtonUp("C" + playerNum + " Y"))
+        if (Input.GetButtonUp("C" + playerNum + " X"))
         {
             if(myItem != null)
             {

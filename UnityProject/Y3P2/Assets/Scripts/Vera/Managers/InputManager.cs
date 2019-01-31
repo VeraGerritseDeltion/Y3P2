@@ -32,14 +32,14 @@ public class InputManager : MonoBehaviour
         {
             AC(2);
         }
-        if (Input.GetButtonDown("C3 A"))
-        {
-            AC(3);
-        }
-        if (Input.GetButtonDown("C4 A"))
-        {
-            AC(4);
-        }
+        //if (Input.GetButtonDown("C3 A"))
+        //{
+        //    AC(3);
+        //}
+        //if (Input.GetButtonDown("C4 A"))
+        //{
+        //    AC(4);
+        //}
 
 
     }

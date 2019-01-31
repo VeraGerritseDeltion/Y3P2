@@ -102,20 +102,20 @@ public class Car_Char_Sel_Manager : MonoBehaviour
                 AC(2);
             }
         }
-        if (Input.GetButtonDown("C3 A"))
-        {
-            if (!Here(3))
-            {
-                AC(3);
-            }
-        }
-        if (Input.GetButtonDown("C4 A"))
-        {
-            if (!Here(4))
-            {
-                AC(4);
-            }
-        }
+        //if (Input.GetButtonDown("C3 A"))
+        //{
+        //    if (!Here(3))
+        //    {
+        //        AC(3);
+        //    }
+        //}
+        //if (Input.GetButtonDown("C4 A"))
+        //{
+        //    if (!Here(4))
+        //    {
+        //        AC(4);
+        //    }
+        //}
         for (int i = 0; i < current.Count; i++)
         {
             switch (current[i])

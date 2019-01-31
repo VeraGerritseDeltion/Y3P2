@@ -75,12 +75,12 @@ public class KartPhysics : MonoBehaviour
                 AcceleratingBraking();
             }
 
-            if (Vector3.Distance(rb.velocity, Vector3.zero) > velocityCheck && ((playerInput.forward || playerInput.backward) || touchingGround < 1))
+            if (Vector3.Distance(rb.velocity, Vector3.zero) > velocityCheck && ((playerInput.forward > 0 || playerInput.forward < 0) || touchingGround < 1))
             {
                 rb.AddTorque(transform.up * (playerInput.drifting ? rotateSpeed * 2 : rotateSpeed) * playerInput.horizontal, ForceMode.Acceleration);
                 //rb.MoveRotation(rb.rotation * Quaternion.Euler(Vector3.up * rotateSpeed * playerInput.horizontal));
                 
-                if (playerInput.forward)
+                if (playerInput.forward > 0)
                 {
                     z = -playerInput.horizontal * characterAngle;
                     x = -characterAngle;
@@ -97,7 +97,7 @@ public class KartPhysics : MonoBehaviour
                 }
             }
 
-            if (!playerInput.forward && !playerInput.backward && touchingGround > 0)
+            if (playerInput.forward == 0  && touchingGround > 0)
             {
                 rb.velocity *= velocityDecrease;
             }
@@ -109,7 +109,7 @@ public class KartPhysics : MonoBehaviour
             }
             else
             {
-                float rotation = playerInput.horizontal * 40f * (playerInput.backward ? -1 : 1);
+                float rotation = playerInput.horizontal * 40f * (playerInput.forward < 0 ? -1 : 1);
                 
                 wheels[0].localEulerAngles = new Vector3(0, Mathf.SmoothDampAngle(wheels[0].localEulerAngles.y, rotation, ref refVelocity, wheelSmooth));
                 wheels[1].localEulerAngles = new Vector3(0, Mathf.SmoothDampAngle(wheels[1].localEulerAngles.y, rotation, ref refVelocity, wheelSmooth));
@@ -128,8 +128,8 @@ public class KartPhysics : MonoBehaviour
 
     private void GetPlayerInput()
     {
-        playerInput.forward = Input.GetButton("C" + playerNum + " A");
-        playerInput.backward = Input.GetButton("C" + playerNum + " B");
+        playerInput.forward = Input.GetAxis("C" + playerNum + " Vert");
+        //playerInput.backward = Input.GetAxis("C" + playerNum + " Vert");
         playerInput.horizontal = Input.GetAxis("C" + playerNum + " Hor");
         playerInput.drifting = Input.GetButton("C" + playerNum + " LB");
     }
@@ -194,13 +194,13 @@ public class KartPhysics : MonoBehaviour
     
     private void AcceleratingBraking()
     {
-        if (playerInput.forward)
+        if (playerInput.forward > 0)
         {
             //rb.AddForceAtPosition(Vector3.ProjectOnPlane(transform.forward, groundNormal) * (slow ? enginePower * slowValue : enginePower), centerOfMass.position, ForceMode.Acceleration);
             rb.AddForceAtPosition(transform.forward * (slow ? enginePower * slowValue : enginePower), centerOfMass.position, ForceMode.Acceleration);
 
         }
-        else if (playerInput.backward)
+        else if (playerInput.forward < 0)
         {
             //rb.AddForceAtPosition(Vector3.ProjectOnPlane(-transform.forward, groundNormal) * (slow ? enginePower * slowValue : enginePower), centerOfMass.position, ForceMode.Acceleration);
             rb.AddForceAtPosition(-transform.forward * (slow ? enginePower * slowValue : enginePower), centerOfMass.position, ForceMode.Acceleration);
@@ -265,8 +265,8 @@ public class KartPhysics : MonoBehaviour
 
 public class PlayerInput
 {
-    public bool forward;
-    public bool backward;
+    public float forward;
+    public float backward;
     public float horizontal;
     public bool drifting;
 }
