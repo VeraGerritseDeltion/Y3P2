@@ -194,7 +194,7 @@ public class CheckpointManager : MonoBehaviour
         return d;
     }
 
-    public GameObject NextTarget(Racer own)
+    public GameObject NextTarget(Racer own, GameObject lastTarget)
     {
         int index = racers.IndexOf(own);
         if( index <= 0)
@@ -203,20 +203,7 @@ public class CheckpointManager : MonoBehaviour
         }
         if(index - 1 >= 0)
         {
-            if(LastCheckpoint(own) == LastCheckpoint(racers[index - 1]))
-            {
                 return racers[index - 1].transform.root.gameObject;
-            }
-            else
-            {
-                int ind = allCheckpoints.IndexOf(LastCheckpoint(own));
-                ind++;
-                if (ind == allCheckpoints.Count)
-                {
-                    ind = 0;
-                }
-                return allCheckpoints[ind].gameObject;
-            }
         }
         return null;
     }

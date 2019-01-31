@@ -15,6 +15,7 @@ public class Red_Marble : Item
     {
         myRacer.anim.SetTrigger("Over");
         myRacer.anim.speed = 2;
+        movement.enabled = false;
         StartCoroutine(Fire());
     }
 
@@ -26,9 +27,9 @@ public class Red_Marble : Item
         myR.isKinematic = false;
         myRacer.anim.speed = 1;
         myRacer.myItem = null;
-        GetComponentInChildren<Collider>().enabled = true;
+        movement.enabled = true;
 
-        if (CheckpointManager.instance.NextTarget(myRacer) == null)
+        if (CheckpointManager.instance.NextTarget(myRacer, null) == null)
         {
             myR.AddForce(myRacer.gameObject.transform.forward * speed);
         }
@@ -36,6 +37,9 @@ public class Red_Marble : Item
         {
             fired = true;
         }
+        yield return new WaitForSeconds(1f);
+        GetComponentInChildren<Collider>().enabled = true;
+
     }
 
     private void Update()
@@ -43,7 +47,7 @@ public class Red_Marble : Item
         
         if (fired)
         {
-            target = CheckpointManager.instance.NextTarget(myRacer);
+            target = CheckpointManager.instance.NextTarget(myRacer, target);
             if (target != null)
             {
                 movement.destination = target.transform.position;
